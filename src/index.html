@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leonardo Rocha - Data Engineer & AI Products. Transformando dados em inteligência.">
-    <meta name="keywords" content="Data Engineer, IA, Machine Learning, Automação, Python, SQL, Cloud, AWS">
+    <meta name="description" content="Leonardo Rocha - Data Engineer & AI Products. Cientista da Computação atuando como Engenheiro de Dados e Analytics IA no Itaú Unibanco.">
+    <meta name="keywords" content="Data Engineer, IA, Machine Learning, Automação, Python, SQL, Cloud, AWS, Analytics">
     <meta property="og:title" content="Leonardo Rocha - Data Engineer & AI Products">
-    <meta property="og:description" content="Data Engineer & AI Products especializado em arquitetura de dados escalável.">
+    <meta property="og:description" content="Engenheiro de Dados e Analytics IA especializado em arquitetura de dados escalável.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leonardorocha.dev">
     <title>Leonardo Rocha - Data Engineer & AI Products</title>
@@ -134,16 +134,12 @@
             margin: 0;
             font-weight: 300;
             line-height: 0.92;
-            font-size: clamp(56px, 9vw, 128px);
+            font-size: clamp(28px, 4.5vw, 64px);
             letter-spacing: -0.02em;
         }
 
         .hero-content h1 span {
             display: block;
-        }
-
-        .hero-content h1 span.bold {
-            font-weight: 600;
         }
 
         .section-label {
@@ -154,7 +150,7 @@
         }
 
         .hero-bio {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1.6;
             max-width: 560px;
             color: var(--text-secondary);
@@ -176,6 +172,7 @@
             transition: all 300ms ease;
             border: none;
             cursor: pointer;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -219,156 +216,103 @@
             filter: grayscale(0.5);
         }
 
-        .hero-image-label {
-            font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-        }
-
         /* ============================================
-           STATS SECTION
+           STACK CARDS SECTION
            ============================================ */
 
-        .stats {
+        .stack-cards {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 48px 64px;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
             border-top: 1px solid var(--border);
             padding-top: 40px;
         }
 
-        .stat-item {
+        .stack-card {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 300ms ease;
         }
 
-        .stat-number {
-            font-size: 40px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+        .stack-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
+            transform: translateY(-2px);
         }
 
-        .stat-label {
+        .stack-card-name {
             font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-            margin-top: 6px;
-        }
-
-        /* ============================================
-           SECTION
-           ============================================ */
-
-        section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 64px 48px;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 0.4fr 1fr;
-            gap: 48px;
-        }
-
-        section h2 {
-            font-size: clamp(28px, 3.5vw, 42px);
-            font-weight: 300;
-            margin: 0 0 12px;
-            line-height: 1.2;
-        }
-
-        section > div:first-child {
-            font-family: var(--mono-font);
-            font-size: 14px;
-            color: var(--text-tertiary);
-        }
-
-        /* ============================================
-           STACK SECTION
-           ============================================ */
-
-        .stack-heading {
-            font-size: clamp(28px, 3.5vw, 42px);
-            font-weight: 300;
-            margin: 0 0 40px;
-            line-height: 1.2;
-            max-width: 640px;
-        }
-
-        .stack-items {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stack-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 24px;
-            align-items: baseline;
-            padding: 22px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .stack-item-name {
-            font-size: 20px;
+            font-size: 13px;
             font-weight: 600;
-        }
-
-        .stack-item-desc {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.6;
+            color: var(--text-primary);
         }
 
         /* ============================================
            PROJECTS SECTION
            ============================================ */
 
-        .projects-subtitle {
-            font-size: 16px;
-            color: var(--text-tertiary);
-            margin: 0 0 40px;
-            max-width: 640px;
-        }
-
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-item {
-            padding: 28px 0;
+        .projects-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 64px 48px;
             border-top: 1px solid var(--border);
         }
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+        .projects-header {
+            margin-bottom: 48px;
+        }
+
+        .projects-section h2 {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 300;
+            margin: 0 0 24px;
+            line-height: 1.2;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
-            margin-bottom: 12px;
+        }
+
+        .project-card {
+            padding: 28px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 300ms ease;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 12px 24px rgba(69, 39, 160, 0.1);
+            transform: translateY(-4px);
         }
 
         .project-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-        }
-
-        .project-index {
-            font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-            white-space: nowrap;
+            color: var(--text-primary);
         }
 
         .project-desc {
-            font-size: 16px;
-            line-height: 1.65;
+            font-size: 15px;
+            line-height: 1.6;
             color: var(--text-secondary);
-            max-width: 680px;
-            margin: 12px 0 14px;
+            flex-grow: 1;
         }
 
         .project-tags {
@@ -393,30 +337,20 @@
             color: var(--accent);
         }
 
-        /* ============================================
-           CONTACT SECTION
-           ============================================ */
-
-        .contact-heading {
-            font-size: clamp(32px, 4.5vw, 56px);
-            font-weight: 300;
-            margin: 0 0 20px;
-            line-height: 1.1;
-            max-width: 560px;
+        .project-link {
+            font-family: var(--mono-font);
+            font-size: 13px;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 300ms ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .contact-body {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            max-width: 560px;
-            margin: 0 0 36px;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+        .project-link:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
         }
 
         /* ============================================
@@ -459,9 +393,8 @@
                 max-width: 300px;
             }
 
-            section {
-                grid-template-columns: 1fr;
-                gap: 32px;
+            .stack-cards {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             header {
@@ -474,20 +407,14 @@
         }
 
         @media (max-width: 768px) {
-            .stats {
+            .stack-cards {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+                gap: 12px;
                 padding: 0 24px 48px;
             }
 
-            .stack-item {
+            .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .project-header {
-                flex-direction: column;
-                align-items: flex-start;
             }
 
             footer {
@@ -508,8 +435,8 @@
                 gap: 12px;
             }
 
-            section,
-            .hero {
+            .hero,
+            .projects-section {
                 padding: 48px 24px;
             }
 
@@ -536,9 +463,7 @@
         <div class="navbar-brand">LR</div>
         <nav>
             <a href="#perfil">Perfil</a>
-            <a href="#stack">Stack</a>
             <a href="#projetos">Projetos</a>
-            <a href="#contato">Contato</a>
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
         </nav>
     </header>
@@ -547,133 +472,76 @@
     <section id="perfil" class="hero">
         <div class="hero-content">
             <div class="section-label">01 / Perfil</div>
-            <h1>
-                <span>Leonardo</span>
-                <span class="bold">Rocha</span>
-            </h1>
-            <p class="hero-bio">Engenheiro de Dados & IA no Itaú Unibanco. Nos últimos 5 anos saí de estagiário a sênior, passando por Seguros, Operações e Cartões, atendendo pessoa física e jurídica. Formado em Ciência da Computação (Mackenzie), com MBA em Data Science e IA (FIAP) e especialização em andamento em Engenharia de Dados e Big Data (POLI/USP).</p>
+            <h1>Leonardo Rocha</h1>
+            <p class="hero-bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
             <div class="hero-cta">
                 <a href="https://www.linkedin.com/in/leonardo-rocha-2018/" target="_blank" class="btn btn-primary">Conectar no LinkedIn</a>
-                <a href="#contato" class="btn btn-secondary">Falar comigo</a>
+                <a href="mailto:leonardo.rocha.2018@outlook.com" class="btn btn-secondary">Enviar e-mail</a>
             </div>
         </div>
         <div class="hero-image-container">
             <img src="assets/images/me.png" alt="Leonardo Rocha - Engenheiro de Dados" class="hero-image">
-            <div class="hero-image-label">Disponível para oportunidades internacionais</div>
         </div>
     </section>
 
-    <!-- STATS SECTION -->
-    <div class="stats">
-        <div class="stat-item">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Anos de experiência</div>
+    <!-- STACK CARDS SECTION -->
+    <div class="stack-cards">
+        <div class="stack-card">
+            <div class="stack-card-name">AWS</div>
         </div>
-        <div class="stat-item">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Negócios no Itaú</div>
+        <div class="stack-card">
+            <div class="stack-card-name">Python</div>
         </div>
-        <div class="stat-item">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Certificações AWS</div>
+        <div class="stack-card">
+            <div class="stack-card-name">Spark</div>
         </div>
-        <div class="stat-item">
-            <div class="stat-number">2026</div>
-            <div class="stat-label">Especialização POLI/USP</div>
+        <div class="stack-card">
+            <div class="stack-card-name">SQL</div>
+        </div>
+        <div class="stack-card">
+            <div class="stack-card-name">Terraform</div>
+        </div>
+        <div class="stack-card">
+            <div class="stack-card-name">IA</div>
         </div>
     </div>
 
-    <!-- STACK SECTION -->
-    <section id="stack">
-        <div class="section-label">02 / Stack</div>
-        <div>
-            <h2 class="stack-heading">Ferramentas e tecnologias com as quais construo no dia a dia.</h2>
-            <div class="stack-items">
-                <div class="stack-item">
-                    <div class="stack-item-name">AWS</div>
-                    <div class="stack-item-desc">Cloud Practitioner, AI Practitioner e Solutions Architect Associate — infraestrutura, dados e IA na nuvem.</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-item-name">Python</div>
-                    <div class="stack-item-desc">Automação, pipelines de dados e prototipagem de soluções de IA.</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-item-name">Spark</div>
-                    <div class="stack-item-desc">Processamento distribuído de grandes volumes de dados.</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-item-name">SQL</div>
-                    <div class="stack-item-desc">Modelagem e consulta de dados para analytics e produtos internos.</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-item-name">Terraform</div>
-                    <div class="stack-item-desc">Infraestrutura como código para plataformas de dados.</div>
-                </div>
-                <div class="stack-item">
-                    <div class="stack-item-name">Inteligência Artificial</div>
-                    <div class="stack-item-desc">Aplicação de IA generativa e modelos de ML a problemas de engenharia de dados.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- PROJECTS SECTION -->
-    <section id="projetos">
-        <div class="section-label">03 / Projetos</div>
-        <div>
-            <h2 class="stack-heading">Cases técnicos</h2>
-            <p class="projects-subtitle">Uma seleção anonimizada de iniciativas de engenharia de dados e IA que ajudei a construir.</p>
-            <div class="projects-list">
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Aceleração de pipelines para ciência de dados</div>
-                        <div class="project-index">01</div>
-                    </div>
-                    <p class="project-desc">Automação de etapas repetitivas de ingestão e preparação de dados, reduzindo o tempo entre hipótese e modelo em produção.</p>
-                    <div class="project-tags">
-                        <div class="tag">Python</div>
-                        <div class="tag">Spark</div>
-                        <div class="tag">AWS</div>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">Padronização de engenharia de analytics</div>
-                        <div class="project-index">02</div>
-                    </div>
-                    <p class="project-desc">Framework interno de qualidade e observabilidade de dados adotado por múltiplos times de analytics.</p>
-                    <div class="project-tags">
-                        <div class="tag">SQL</div>
-                        <div class="tag">Terraform</div>
-                        <div class="tag">Observability</div>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title">IA aplicada a operações de dados</div>
-                        <div class="project-index">03</div>
-                    </div>
-                    <p class="project-desc">Aplicação de modelos de IA para automatizar diagnósticos e tarefas manuais de engenheiros de dados.</p>
-                    <div class="project-tags">
-                        <div class="tag">IA Generativa</div>
-                        <div class="tag">MLOps</div>
-                        <div class="tag">AWS</div>
-                    </div>
-                </div>
-            </div>
+    <section id="projetos" class="projects-section">
+        <div class="projects-header">
+            <div class="section-label">02 / Projetos</div>
+            <h2>Cases técnicos</h2>
         </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contato">
-        <div class="section-label">04 / Contato</div>
-        <div>
-            <h2 class="contact-heading">Vamos conversar.</h2>
-            <p class="contact-body">Aberto a conversas sobre oportunidades, colaborações e projetos — no Brasil ou fora dele.</p>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/leonardo-rocha-2018/" target="_blank" class="btn btn-primary">Conectar no LinkedIn</a>
-                <a href="https://github.com/leonardo-rocha" target="_blank" class="btn btn-secondary">GitHub</a>
-                <a href="mailto:leonardo.rocha.2018@outlook.com" class="btn btn-secondary">Enviar e-mail</a>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">Aceleração de pipelines para ciência de dados</div>
+                <p class="project-desc">Automação de etapas repetitivas de ingestão e preparação de dados, reduzindo o tempo entre hipótese e modelo em produção.</p>
+                <div class="project-tags">
+                    <div class="tag">Python</div>
+                    <div class="tag">Spark</div>
+                    <div class="tag">AWS</div>
+                </div>
+                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
+            </div>
+            <div class="project-card">
+                <div class="project-title">Padronização de engenharia de analytics</div>
+                <p class="project-desc">Framework interno de qualidade e observabilidade de dados adotado por múltiplos times de analytics.</p>
+                <div class="project-tags">
+                    <div class="tag">SQL</div>
+                    <div class="tag">Terraform</div>
+                    <div class="tag">Observability</div>
+                </div>
+                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
+            </div>
+            <div class="project-card">
+                <div class="project-title">IA aplicada a operações de dados</div>
+                <p class="project-desc">Aplicação de modelos de IA para automatizar diagnósticos e tarefas manuais de engenheiros de dados.</p>
+                <div class="project-tags">
+                    <div class="tag">IA Generativa</div>
+                    <div class="tag">MLOps</div>
+                    <div class="tag">AWS</div>
+                </div>
+                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
             </div>
         </div>
     </section>
@@ -690,55 +558,25 @@
         const translations = {
             pt: {
                 perfil: 'Perfil',
-                stack: 'Stack',
                 projetos: 'Projetos',
-                contato: 'Contato',
                 sectionPerfil: '01 / Perfil',
-                sectionStack: '02 / Stack',
-                sectionProjetos: '03 / Projetos',
-                sectionContato: '04 / Contato',
-                heroBio: 'Engenheiro de Dados & IA no Itaú Unibanco. Nos últimos 5 anos saí de estagiário a sênior, passando por Seguros, Operações e Cartões, atendendo pessoa física e jurídica. Formado em Ciência da Computação (Mackenzie), com MBA em Data Science e IA (FIAP) e especialização em andamento em Engenharia de Dados e Big Data (POLI/USP).',
+                sectionProjetos: '02 / Projetos',
+                heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.',
                 ctaPrimary: 'Conectar no LinkedIn',
-                ctaSecondary: 'Falar comigo',
-                available: 'Disponível para oportunidades internacionais',
-                statsExp: 'Anos de experiência',
-                statsBusiness: 'Negócios no Itaú',
-                statsCerts: 'Certificações AWS',
-                statsSpec: 'Especialização POLI/USP',
-                stackHeading: 'Ferramentas e tecnologias com as quais construo no dia a dia.',
+                ctaSecondary: 'Enviar e-mail',
                 projectsHeading: 'Cases técnicos',
-                projectsSub: 'Uma seleção anonimizada de iniciativas de engenharia de dados e IA que ajudei a construir.',
-                contactHeading: 'Vamos conversar.',
-                contactBody: 'Aberto a conversas sobre oportunidades, colaborações e projetos — no Brasil ou fora dele.',
-                contactGithub: 'GitHub',
-                contactEmail: 'Enviar e-mail',
                 footerCopy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
                 footerTop: 'Voltar ao topo ↑',
             },
             en: {
                 perfil: 'Profile',
-                stack: 'Stack',
                 projetos: 'Projects',
-                contato: 'Contact',
                 sectionPerfil: '01 / Profile',
-                sectionStack: '02 / Stack',
-                sectionProjetos: '03 / Projects',
-                sectionContato: '04 / Contact',
-                heroBio: 'Data & AI Engineer at Itaú Unibanco. Over the past 5 years I grew from intern to senior, working across Insurance, Operations and Cards, serving both individual and corporate clients. Computer Science degree (Mackenzie), MBA in Data Science and AI (FIAP), and an ongoing specialization in Data Engineering and Big Data (POLI/USP).',
+                sectionProjetos: '02 / Projects',
+                heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics AI at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
                 ctaPrimary: 'Connect on LinkedIn',
-                ctaSecondary: 'Get in touch',
-                available: 'Open to international opportunities',
-                statsExp: 'Years of experience',
-                statsBusiness: 'Business units at Itaú',
-                statsCerts: 'AWS certifications',
-                statsSpec: 'POLI/USP specialization',
-                stackHeading: 'The tools and technologies I build with day to day.',
+                ctaSecondary: 'Send an email',
                 projectsHeading: 'Technical cases',
-                projectsSub: 'An anonymized selection of data and AI engineering initiatives I helped build.',
-                contactHeading: "Let's talk.",
-                contactBody: 'Open to conversations about opportunities, collaborations and projects — in Brazil or abroad.',
-                contactGithub: 'GitHub',
-                contactEmail: 'Send an email',
                 footerCopy: '© 2026 Leonardo Rocha. All rights reserved.',
                 footerTop: 'Back to top ↑',
             }
@@ -754,8 +592,8 @@
 
             // Update navigation
             document.querySelectorAll('nav a').forEach((link, idx) => {
-                const keys = ['perfil', 'stack', 'projetos', 'contato'];
-                if (idx < 4) link.textContent = t[keys[idx]];
+                const keys = ['perfil', 'projetos'];
+                if (idx < 2) link.textContent = t[keys[idx]];
             });
 
             // Update language button
@@ -763,8 +601,8 @@
 
             // Update section labels
             document.querySelectorAll('.section-label').forEach((label, idx) => {
-                const keys = ['sectionPerfil', 'sectionStack', 'sectionProjetos', 'sectionContato'];
-                label.textContent = t[keys[idx]];
+                const keys = ['sectionPerfil', 'sectionProjetos'];
+                if (idx < 2) label.textContent = t[keys[idx]];
             });
 
             // Update hero bio
@@ -775,33 +613,8 @@
             ctaBtns[0].textContent = t.ctaPrimary;
             ctaBtns[1].textContent = t.ctaSecondary;
 
-            // Update available label
-            document.querySelector('.hero-image-label').textContent = t.available;
-
-            // Update stats labels
-            const statLabels = document.querySelectorAll('.stat-label');
-            const statsKeys = ['statsExp', 'statsBusiness', 'statsCerts', 'statsSpec'];
-            statLabels.forEach((label, idx) => {
-                label.textContent = t[statsKeys[idx]];
-            });
-
-            // Update stack heading
-            document.querySelector('.stack-heading').textContent = t.stackHeading;
-
-            // Update projects heading and subtitle
-            const projectsHeading = document.querySelectorAll('.stack-heading')[1];
-            if (projectsHeading) projectsHeading.textContent = t.projectsHeading;
-            document.querySelector('.projects-subtitle').textContent = t.projectsSub;
-
-            // Update contact heading and body
-            document.querySelector('.contact-heading').textContent = t.contactHeading;
-            document.querySelector('.contact-body').textContent = t.contactBody;
-
-            // Update contact buttons
-            const contactBtns = document.querySelectorAll('.contact-links .btn');
-            contactBtns[0].textContent = t.ctaPrimary;
-            contactBtns[1].textContent = t.contactGithub;
-            contactBtns[2].textContent = t.contactEmail;
+            // Update projects heading
+            document.querySelector('.projects-section h2').textContent = t.projectsHeading;
 
             // Update footer
             document.querySelector('footer > div:first-child').textContent = t.footerCopy;
