@@ -20,9 +20,9 @@
             <a href="#perfil">Perfil</a>
             <a href="#projetos">Projetos</a>
             <a href="#curriculum">Currículo</a>
-            <a href="https://www.linkedin.com/in/leonardosantosrocha/" target="_blank">Contato</a>
-            <button class="theme-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
-            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+            <a href="https://www.linkedin.com/in/leonardosantosrocha/" target="_blank" rel="noopener noreferrer">Contato</a>
+            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+            <button class="lang-toggle" id="langToggle" aria-label="Change language">🇧🇷</button>
         </nav>
     </header>
 
@@ -33,7 +33,7 @@
             <h1>Leonardo Rocha</h1>
             <p class="hero-bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
             <!-- Skills Cards -->
-            <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;">
+            <div class="skills-grid">
                 <div class="skill-badge">AWS</div>
                 <div class="skill-badge">Python</div>
                 <div class="skill-badge">Spark</div>
@@ -51,7 +51,6 @@
     <section id="projetos" class="projects-section">
         <div class="projects-header">
             <div class="section-label">01 / Projetos</div>
-            <h2>Cases técnicos</h2>
         </div>
         <div class="projects-grid">
             <div class="project-card">
@@ -64,7 +63,7 @@
                     <div class="tag">JavaScript</div>
                     <div class="tag">Claude Code</div>
                 </div>
-                <a href="https://github.com/leonardosantosrocha/claude-my-personal-web-page" target="_blank" class="project-link">Ver repositório →</a>
+                <a href="https://github.com/leonardosantosrocha/claude-my-personal-web-page" target="_blank" rel="noopener noreferrer" class="project-link">Ver repositório →</a>
             </div>
             <div class="project-card">
                 <div class="project-title">Em desenvolvimento</div>
@@ -144,7 +143,7 @@
                 </div>
 
                 <!-- Certifications -->
-                <h3 style="margin-top: 48px; margin-bottom: 32px; font-size: 18px; font-weight: 600; color: var(--text-primary);">Certificações</h3>
+                <h3 class="certifications-title">Certificações</h3>
                 <div class="curriculum-item">
                     <div class="curriculum-position">AWS Certified AI Practitioner</div>
                     <div class="curriculum-company">Amazon Web Services (AWS)</div>
@@ -187,15 +186,13 @@
         }
 
         function updateThemeToggleButton() {
-            const button = document.querySelector('.theme-toggle');
+            const button = document.getElementById('themeToggle');
             const isDarkMode = document.documentElement.classList.contains('dark-mode');
             button.textContent = isDarkMode ? '☀️' : '🌙';
         }
 
-        // Initialize dark mode on page load
-        initializeDarkMode();
-
-        let currentLang = 'pt';
+        // Language management
+        let currentLang = localStorage.getItem('language') || 'pt';
 
         const translations = {
             pt: {
@@ -203,12 +200,9 @@
                 projetos: 'Projetos',
                 curriculum: 'Currículo',
                 sectionPerfil: '00 / Perfil',
-                sectionSkills: '01 / Skills',
-                sectionProjetos: '02 / Projetos',
-                sectionCurriculum: '03 / Currículo',
+                sectionProjetos: '01 / Projetos',
+                sectionCurriculum: '02 / Currículo',
                 heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.',
-                ctaPrimary: 'Conectar no LinkedIn',
-                projectsHeading: 'Projetos',
                 footerCopy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
                 footerTop: 'Voltar ao topo ↑',
             },
@@ -217,12 +211,9 @@
                 projetos: 'Projects',
                 curriculum: 'Resume',
                 sectionPerfil: '00 / Profile',
-                sectionSkills: '01 / Skills',
-                sectionProjetos: '02 / Projects',
-                sectionCurriculum: '03 / Resume',
+                sectionProjetos: '01 / Projects',
+                sectionCurriculum: '02 / Curriculum',
                 heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
-                ctaPrimary: 'Connect on LinkedIn',
-                projectsHeading: 'Projects',
                 footerCopy: '© 2026 Leonardo Rocha. All rights reserved.',
                 footerTop: 'Back to top ↑',
             }
@@ -230,11 +221,16 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            localStorage.setItem('language', currentLang);
             updateLanguage();
         }
 
         function updateLanguage() {
             const t = translations[currentLang];
+            const htmlElement = document.documentElement;
+
+            // Update html lang attribute
+            htmlElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
 
             // Update navigation
             document.querySelectorAll('nav a').forEach((link, idx) => {
@@ -242,31 +238,28 @@
                 if (idx < 3) link.textContent = t[keys[idx]];
             });
 
-            // Update language button
-            document.querySelector('.lang-toggle').textContent = currentLang === 'pt' ? 'EN' : 'PT';
+            // Update language button with flag
+            const langButton = document.getElementById('langToggle');
+            langButton.textContent = currentLang === 'pt' ? '🇺🇸' : '🇧🇷';
 
             // Update section labels
             document.querySelectorAll('.section-label').forEach((label, idx) => {
-                const keys = ['sectionPerfil', 'sectionSkills', 'sectionProjetos', 'sectionCurriculum'];
+                const keys = ['sectionPerfil', 'sectionProjetos', 'sectionCurriculum'];
                 if (idx < 4) label.textContent = t[keys[idx]];
             });
 
             // Update hero bio
             document.querySelector('.hero-bio').textContent = t.heroBio;
 
-            // Update CTA
-            const ctaBtns = document.querySelectorAll('.hero-cta .btn');
-            if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaPrimary;
-
-            // Update projects heading
-            document.querySelector('.projects-section h2').textContent = t.projectsHeading;
-
             // Update footer
             document.querySelector('footer > div:first-child').textContent = t.footerCopy;
             document.querySelector('footer a').textContent = t.footerTop;
         }
 
-        // Initialize language on load
+        // Initialize
+        document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
+        document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+        initializeDarkMode();
         updateLanguage();
     </script>
 </body>

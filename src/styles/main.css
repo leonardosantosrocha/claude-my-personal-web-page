@@ -150,10 +150,12 @@ nav a:hover {
     margin: 32px 0 0;
 }
 
-.hero-cta {
-    display: flex;
+/* Skills Grid */
+.skills-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 16px;
-    margin-top: 36px;
 }
 
 .btn {
@@ -359,6 +361,14 @@ nav a:hover {
     color: var(--text-primary);
 }
 
+.certifications-title {
+    margin-top: 48px;
+    margin-bottom: 32px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
 .curriculum-item {
     padding-bottom: 28px;
     margin-bottom: 28px;
@@ -490,10 +500,6 @@ footer a:hover {
     .projects-section,
     .curriculum-section {
         padding: 48px 24px;
-    }
-
-    .hero-cta {
-        flex-direction: column;
     }
 
     .btn {
