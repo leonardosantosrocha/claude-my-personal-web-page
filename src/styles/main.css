@@ -158,39 +158,6 @@ nav a:hover {
     gap: 16px;
 }
 
-.btn {
-    font-family: var(--mono-font);
-    font-size: 13px;
-    padding: 14px 26px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 300ms ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.btn-primary {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-}
-
-.btn-primary:hover {
-    opacity: 0.8;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    border: 1px solid var(--text-primary);
-    background: transparent;
-    color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-    transform: translateY(-2px);
-}
 
 .hero-image-container {
     display: flex;
@@ -227,7 +194,7 @@ nav a:hover {
 
 .skill-badge:hover {
     border-color: var(--accent);
-    box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
+    box-shadow: 0 8px 16px color-mix(in srgb, var(--accent) 10%, transparent);
     transform: translateY(-2px);
 }
 
@@ -273,7 +240,7 @@ nav a:hover {
 
 .project-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 12px 24px rgba(69, 39, 160, 0.1);
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 10%, transparent);
     transform: translateY(-4px);
 }
 
@@ -368,7 +335,7 @@ nav a:hover {
 }
 
 .certifications-title {
-    margin-top: 48px;
+    margin-top: 0px;
     margin-bottom: 32px;
     font-size: 18px;
     font-weight: 600;
