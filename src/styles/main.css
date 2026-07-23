@@ -201,58 +201,32 @@ nav a:hover {
     height: 360px;
     object-fit: cover;
     border-radius: 4px;
-    filter: grayscale(1);
-    transition: filter 300ms ease;
-}
-
-.hero-image:hover {
-    filter: grayscale(0.5);
 }
 
 /* ============================================
-   STACK CARDS SECTION
+   SKILL BADGES
    ============================================ */
 
-.stack-cards-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 64px 48px;
-    border-top: 1px solid var(--border);
-    display: block;
-    transition: border-color 300ms ease;
-}
-
-.stack-cards {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-}
-
-.stack-card {
+.skill-badge {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
+    padding: 12px 16px;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 4px;
-    text-align: center;
-    transition: all 300ms ease;
-}
-
-.stack-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
-    transform: translateY(-2px);
-}
-
-.stack-card-name {
     font-family: var(--mono-font);
     font-size: 13px;
     font-weight: 600;
     color: var(--text-primary);
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.skill-badge:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
+    transform: translateY(-2px);
 }
 
 /* ============================================
@@ -425,39 +399,6 @@ nav a:hover {
     color: var(--text-secondary);
 }
 
-/* Certifications */
-.certifications-section {
-    margin-top: 64px;
-    padding-top: 64px;
-    border-top: 1px solid var(--border);
-    transition: border-color 300ms ease;
-}
-
-.certifications-section h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 32px;
-    color: var(--text-primary);
-}
-
-.certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-}
-
-.certification-item {
-    padding: 20px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    transition: all 300ms ease;
-}
-
-.certification-item:hover {
-    border-color: var(--accent);
-    box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
-}
 
 /* ============================================
    FOOTER
@@ -500,10 +441,6 @@ footer a:hover {
         max-width: 300px;
     }
 
-    .stack-cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     header {
         padding: 16px 24px;
     }
@@ -514,11 +451,6 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-    .stack-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
     .projects-grid {
         grid-template-columns: 1fr;
     }
