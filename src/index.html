@@ -99,9 +99,6 @@
             color: var(--accent);
         }
 
-        nav a:nth-child(n+2) {
-            display: none;
-        }
 
         .lang-toggle {
             font-family: inherit;
@@ -362,6 +359,91 @@
         }
 
         /* ============================================
+           CURRICULUM SECTION
+           ============================================ */
+
+        .curriculum-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 64px 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .curriculum-container {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 48px;
+        }
+
+        .curriculum-divider {
+            background: var(--border);
+            width: 1px;
+            height: 100%;
+            min-height: 600px;
+        }
+
+        .curriculum-column h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+        }
+
+        .curriculum-item {
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .curriculum-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .curriculum-position {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .curriculum-company {
+            font-family: var(--mono-font);
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-bottom: 4px;
+        }
+
+        .curriculum-period {
+            font-family: var(--mono-font);
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+
+        .curriculum-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .curriculum-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .curriculum-divider {
+                display: none;
+            }
+
+            .curriculum-column h3 {
+                font-size: 16px;
+            }
+        }
+
+        /* ============================================
            FOOTER
            ============================================ */
 
@@ -471,6 +553,7 @@
         <nav>
             <a href="#perfil">Perfil</a>
             <a href="#projetos">Projetos</a>
+            <a href="#curriculum">Currículo</a>
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
         </nav>
     </header>
@@ -523,34 +606,93 @@
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-title">Aceleração de pipelines para ciência de dados</div>
-                <p class="project-desc">Automação de etapas repetitivas de ingestão e preparação de dados, reduzindo o tempo entre hipótese e modelo em produção.</p>
+                <div class="project-title">Página Pessoal</div>
+                <p class="project-desc">Portfólio técnico minimalista construído com HTML, CSS, JavaScript e Claude Code. Design responsivo, suporte bilíngue e dark mode automático.</p>
                 <div class="project-tags">
-                    <div class="tag">Python</div>
-                    <div class="tag">Spark</div>
                     <div class="tag">AWS</div>
+                    <div class="tag">HTML</div>
+                    <div class="tag">CSS</div>
+                    <div class="tag">JavaScript</div>
+                    <div class="tag">Claude Code</div>
                 </div>
-                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
+                <a href="https://github.com/leonardosantosrocha/claude-my-personal-web-page" target="_blank" class="project-link">Ver repositório →</a>
             </div>
             <div class="project-card">
-                <div class="project-title">Padronização de engenharia de analytics</div>
-                <p class="project-desc">Framework interno de qualidade e observabilidade de dados adotado por múltiplos times de analytics.</p>
+                <div class="project-title">Em desenvolvimento</div>
+                <p class="project-desc">Novo projeto em desenvolvimento. Em breve mais informações.</p>
                 <div class="project-tags">
-                    <div class="tag">SQL</div>
-                    <div class="tag">Terraform</div>
-                    <div class="tag">Observability</div>
+                    <div class="tag">Próximo</div>
                 </div>
-                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
+                <a href="#" class="project-link" onclick="return false;">Em breve →</a>
             </div>
-            <div class="project-card">
-                <div class="project-title">IA aplicada a operações de dados</div>
-                <p class="project-desc">Aplicação de modelos de IA para automatizar diagnósticos e tarefas manuais de engenheiros de dados.</p>
-                <div class="project-tags">
-                    <div class="tag">IA Generativa</div>
-                    <div class="tag">MLOps</div>
-                    <div class="tag">AWS</div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM SECTION -->
+    <section id="curriculum" class="curriculum-section">
+        <div class="section-label">03 / Currículo</div>
+        <div class="curriculum-container">
+            <!-- Professional Experience -->
+            <div class="curriculum-column">
+                <h3>Experiência Profissional</h3>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Senior Data Engineer - Insurance</div>
+                    <div class="curriculum-company">Itaú Unibanco</div>
+                    <div class="curriculum-period">Mar 2026 - Presente (5 meses)</div>
+                    <div class="curriculum-description">Building scalable data products and platforms on AWS.</div>
                 </div>
-                <a href="https://github.com/leonardo-rocha" target="_blank" class="project-link">Ver repositório →</a>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Senior Analytics Engineer - Cards</div>
+                    <div class="curriculum-company">Itaú Unibanco</div>
+                    <div class="curriculum-period">Mar 2025 - Fev 2026 (1 ano)</div>
+                    <div class="curriculum-description">Creation and improvement of centralized indicators dashboards. Development of best practices in AWS services.</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Mid Level Analytics Engineer - Cards</div>
+                    <div class="curriculum-company">Itaú Unibanco</div>
+                    <div class="curriculum-period">Mar 2024 - Fev 2025 (1 ano)</div>
+                    <div class="curriculum-description">Designed end-to-end data product processing 500M+ daily events. Built pipelines to transform raw navigation data into customer behavior metrics.</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Entry Level Analytics Engineer - Cards</div>
+                    <div class="curriculum-company">Itaú Unibanco</div>
+                    <div class="curriculum-period">Jul 2022 - Fev 2024 (1 ano 8 meses)</div>
+                    <div class="curriculum-description">Designed internal web application to standardize project documentation. Automated generation reducing effort by 30% and increasing coverage to 95%.</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Data Analyst Intern - Insurance</div>
+                    <div class="curriculum-company">Itaú Unibanco</div>
+                    <div class="curriculum-period">Jan 2021 - Jun 2022 (1 ano 6 meses)</div>
+                    <div class="curriculum-description">Designed automated data pipeline for customer retention analysis. Processed 100K+ insurance contracts daily with daily dashboard delivery.</div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="curriculum-divider"></div>
+
+            <!-- Education -->
+            <div class="curriculum-column">
+                <h3>Formação Acadêmica</h3>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Especialização em Data Engineering e Big Data</div>
+                    <div class="curriculum-company">Escola Politécnica da USP</div>
+                    <div class="curriculum-period">Fev 2026 - Fev 2028</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Especialização em Data Science & Inteligência Artificial</div>
+                    <div class="curriculum-company">FIAP</div>
+                    <div class="curriculum-period">Abr 2024 - Abr 2025</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Bacharelado em Ciência da Computação</div>
+                    <div class="curriculum-company">Universidade Presbiteriana Mackenzie</div>
+                    <div class="curriculum-period">Jan 2020 - Dez 2023</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-position">Técnico em Programação</div>
+                    <div class="curriculum-company">Instituto Tecnológico de Barueri</div>
+                    <div class="curriculum-period">Jan 2017 - Dez 2019</div>
+                </div>
             </div>
         </div>
     </section>
@@ -568,24 +710,28 @@
             pt: {
                 perfil: 'Perfil',
                 projetos: 'Projetos',
+                curriculum: 'Currículo',
                 sectionPerfil: '00 / Perfil',
                 sectionSkills: '01 / Skills',
                 sectionProjetos: '02 / Projetos',
+                sectionCurriculum: '03 / Currículo',
                 heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.',
                 ctaPrimary: 'Conectar no LinkedIn',
-                projectsHeading: 'Cases técnicos',
+                projectsHeading: 'Projetos',
                 footerCopy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
                 footerTop: 'Voltar ao topo ↑',
             },
             en: {
                 perfil: 'Profile',
                 projetos: 'Projects',
+                curriculum: 'Resume',
                 sectionPerfil: '00 / Profile',
                 sectionSkills: '01 / Skills',
                 sectionProjetos: '02 / Projects',
+                sectionCurriculum: '03 / Resume',
                 heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
                 ctaPrimary: 'Connect on LinkedIn',
-                projectsHeading: 'Technical cases',
+                projectsHeading: 'Projects',
                 footerCopy: '© 2026 Leonardo Rocha. All rights reserved.',
                 footerTop: 'Back to top ↑',
             }
@@ -601,8 +747,8 @@
 
             // Update navigation
             document.querySelectorAll('nav a').forEach((link, idx) => {
-                const keys = ['perfil', 'projetos'];
-                if (idx < 2) link.textContent = t[keys[idx]];
+                const keys = ['perfil', 'projetos', 'curriculum'];
+                if (idx < 3) link.textContent = t[keys[idx]];
             });
 
             // Update language button
@@ -610,8 +756,8 @@
 
             // Update section labels
             document.querySelectorAll('.section-label').forEach((label, idx) => {
-                const keys = ['sectionPerfil', 'sectionSkills', 'sectionProjetos'];
-                if (idx < 3) label.textContent = t[keys[idx]];
+                const keys = ['sectionPerfil', 'sectionSkills', 'sectionProjetos', 'sectionCurriculum'];
+                if (idx < 4) label.textContent = t[keys[idx]];
             });
 
             // Update hero bio
