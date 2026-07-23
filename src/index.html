@@ -99,6 +99,10 @@
             color: var(--accent);
         }
 
+        nav a:nth-child(n+2) {
+            display: none;
+        }
+
         .lang-toggle {
             font-family: inherit;
             font-size: 13px;
@@ -220,15 +224,19 @@
            STACK CARDS SECTION
            ============================================ */
 
-        .stack-cards {
+        .stack-cards-section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 48px 64px;
+            padding: 64px 48px;
+            border-top: 1px solid var(--border);
+            display: block;
+        }
+
+        .stack-cards {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 16px;
-            border-top: 1px solid var(--border);
-            padding-top: 40px;
+            margin-top: 40px;
         }
 
         .stack-card {
@@ -410,7 +418,6 @@
             .stack-cards {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
-                padding: 0 24px 48px;
             }
 
             .projects-grid {
@@ -471,12 +478,11 @@
     <!-- HERO SECTION -->
     <section id="perfil" class="hero">
         <div class="hero-content">
-            <div class="section-label">01 / Perfil</div>
+            <div class="section-label">00 / Perfil</div>
             <h1>Leonardo Rocha</h1>
             <p class="hero-bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
             <div class="hero-cta">
                 <a href="https://www.linkedin.com/in/leonardo-rocha-2018/" target="_blank" class="btn btn-primary">Conectar no LinkedIn</a>
-                <a href="mailto:leonardo.rocha.2018@outlook.com" class="btn btn-secondary">Enviar e-mail</a>
             </div>
         </div>
         <div class="hero-image-container">
@@ -485,10 +491,12 @@
     </section>
 
     <!-- STACK CARDS SECTION -->
-    <div class="stack-cards">
-        <div class="stack-card">
-            <div class="stack-card-name">AWS</div>
-        </div>
+    <section class="stack-cards-section">
+        <div class="section-label">01 / Skills</div>
+        <div class="stack-cards">
+            <div class="stack-card">
+                <div class="stack-card-name">AWS</div>
+            </div>
         <div class="stack-card">
             <div class="stack-card-name">Python</div>
         </div>
@@ -504,7 +512,8 @@
         <div class="stack-card">
             <div class="stack-card-name">IA</div>
         </div>
-    </div>
+        </div>
+    </section>
 
     <!-- PROJECTS SECTION -->
     <section id="projetos" class="projects-section">
@@ -559,11 +568,11 @@
             pt: {
                 perfil: 'Perfil',
                 projetos: 'Projetos',
-                sectionPerfil: '01 / Perfil',
+                sectionPerfil: '00 / Perfil',
+                sectionSkills: '01 / Skills',
                 sectionProjetos: '02 / Projetos',
-                heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.',
+                heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.',
                 ctaPrimary: 'Conectar no LinkedIn',
-                ctaSecondary: 'Enviar e-mail',
                 projectsHeading: 'Cases técnicos',
                 footerCopy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
                 footerTop: 'Voltar ao topo ↑',
@@ -571,11 +580,11 @@
             en: {
                 perfil: 'Profile',
                 projetos: 'Projects',
-                sectionPerfil: '01 / Profile',
+                sectionPerfil: '00 / Profile',
+                sectionSkills: '01 / Skills',
                 sectionProjetos: '02 / Projects',
-                heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics AI at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
+                heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
                 ctaPrimary: 'Connect on LinkedIn',
-                ctaSecondary: 'Send an email',
                 projectsHeading: 'Technical cases',
                 footerCopy: '© 2026 Leonardo Rocha. All rights reserved.',
                 footerTop: 'Back to top ↑',
@@ -601,17 +610,16 @@
 
             // Update section labels
             document.querySelectorAll('.section-label').forEach((label, idx) => {
-                const keys = ['sectionPerfil', 'sectionProjetos'];
-                if (idx < 2) label.textContent = t[keys[idx]];
+                const keys = ['sectionPerfil', 'sectionSkills', 'sectionProjetos'];
+                if (idx < 3) label.textContent = t[keys[idx]];
             });
 
             // Update hero bio
             document.querySelector('.hero-bio').textContent = t.heroBio;
 
-            // Update CTAs
+            // Update CTA
             const ctaBtns = document.querySelectorAll('.hero-cta .btn');
-            ctaBtns[0].textContent = t.ctaPrimary;
-            ctaBtns[1].textContent = t.ctaSecondary;
+            if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaPrimary;
 
             // Update projects heading
             document.querySelector('.projects-section h2').textContent = t.projectsHeading;
