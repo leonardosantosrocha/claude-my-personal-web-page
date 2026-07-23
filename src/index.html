@@ -10,541 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leonardorocha.dev">
     <title>Leonardo Rocha - Data Engineer & AI Products</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --bg-primary: oklch(98% 0.003 90);
-            --bg-secondary: oklch(95% 0.003 90);
-            --text-primary: oklch(15% 0.005 90);
-            --text-secondary: oklch(30% 0.005 90);
-            --text-tertiary: oklch(45% 0.005 90);
-            --accent: oklch(45% 0.14 250);
-            --border: oklch(85% 0.005 90);
-            --mono-font: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
-            --sans-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-primary: oklch(18% 0.005 90);
-                --bg-secondary: oklch(22% 0.005 90);
-                --text-primary: oklch(95% 0.003 90);
-                --text-secondary: oklch(80% 0.003 90);
-                --text-tertiary: oklch(65% 0.005 90);
-                --accent: oklch(65% 0.14 250);
-                --border: oklch(30% 0.005 90);
-            }
-        }
-
-        ::selection {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-
-        body {
-            font-family: var(--sans-font);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-        }
-
-        /* ============================================
-           HEADER / NAVIGATION
-           ============================================ */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 48px;
-            background: var(--bg-primary) / 0.85;
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navbar-brand {
-            font-family: var(--mono-font);
-            font-size: 13px;
-            letter-spacing: 0.02em;
-            font-weight: 600;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            font-family: var(--mono-font);
-            font-size: 13px;
-        }
-
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 300ms ease;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-
-        .lang-toggle {
-            font-family: inherit;
-            font-size: 13px;
-            background: none;
-            border: 1px solid var(--text-primary);
-            border-radius: 20px;
-            padding: 6px 14px;
-            cursor: pointer;
-            color: var(--text-primary);
-            transition: all 300ms ease;
-        }
-
-        .lang-toggle:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
-
-        .hero {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 96px 48px 64px;
-            display: grid;
-            grid-template-columns: 1.3fr 0.8fr;
-            gap: 48px;
-            align-items: end;
-        }
-
-        .hero-content h1 {
-            margin: 0;
-            font-weight: 300;
-            line-height: 0.92;
-            font-size: clamp(28px, 4.5vw, 64px);
-            letter-spacing: -0.02em;
-        }
-
-        .hero-content h1 span {
-            display: block;
-        }
-
-        .section-label {
-            font-family: var(--mono-font);
-            font-size: 14px;
-            color: var(--text-tertiary);
-            margin-bottom: 24px;
-        }
-
-        .hero-bio {
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 560px;
-            color: var(--text-secondary);
-            margin: 32px 0 0;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            margin-top: 36px;
-        }
-
-        .btn {
-            font-family: var(--mono-font);
-            font-size: 13px;
-            padding: 14px 26px;
-            border-radius: 2px;
-            text-decoration: none;
-            transition: all 300ms ease;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            opacity: 0.8;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--text-primary);
-            background: transparent;
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            transform: translateY(-2px);
-        }
-
-        .hero-image-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-            border-radius: 4px;
-            filter: grayscale(1);
-            transition: filter 300ms ease;
-        }
-
-        .hero-image:hover {
-            filter: grayscale(0.5);
-        }
-
-        /* ============================================
-           STACK CARDS SECTION
-           ============================================ */
-
-        .stack-cards-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 64px 48px;
-            border-top: 1px solid var(--border);
-            display: block;
-        }
-
-        .stack-cards {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
-            margin-top: 40px;
-        }
-
-        .stack-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 24px 16px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            text-align: center;
-            transition: all 300ms ease;
-        }
-
-        .stack-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 8px 16px rgba(69, 39, 160, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .stack-card-name {
-            font-family: var(--mono-font);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* ============================================
-           PROJECTS SECTION
-           ============================================ */
-
-        .projects-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 64px 48px;
-            border-top: 1px solid var(--border);
-        }
-
-        .projects-header {
-            margin-bottom: 48px;
-        }
-
-        .projects-section h2 {
-            font-size: clamp(28px, 3.5vw, 42px);
-            font-weight: 300;
-            margin: 0 0 24px;
-            line-height: 1.2;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            padding: 28px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            transition: all 300ms ease;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 12px 24px rgba(69, 39, 160, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .project-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .project-desc {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            flex-grow: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-family: var(--mono-font);
-            font-size: 11px;
-            color: var(--text-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 4px 12px;
-            background: transparent;
-            transition: all 300ms ease;
-        }
-
-        .tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .project-link {
-            font-family: var(--mono-font);
-            font-size: 13px;
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 300ms ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .project-link:hover {
-            color: var(--text-primary);
-            transform: translateX(4px);
-        }
-
-        /* ============================================
-           CURRICULUM SECTION
-           ============================================ */
-
-        .curriculum-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 64px 48px;
-            border-top: 1px solid var(--border);
-        }
-
-        .curriculum-container {
-            display: grid;
-            grid-template-columns: 1fr 1px 1fr;
-            gap: 48px;
-        }
-
-        .curriculum-divider {
-            background: var(--border);
-            width: 1px;
-            height: 100%;
-            min-height: 600px;
-        }
-
-        .curriculum-column h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 32px;
-            color: var(--text-primary);
-        }
-
-        .curriculum-item {
-            padding-bottom: 28px;
-            margin-bottom: 28px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .curriculum-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .curriculum-position {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .curriculum-company {
-            font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-            margin-bottom: 4px;
-        }
-
-        .curriculum-period {
-            font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-            margin-bottom: 8px;
-        }
-
-        .curriculum-description {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-secondary);
-        }
-
-        @media (max-width: 768px) {
-            .curriculum-container {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .curriculum-divider {
-                display: none;
-            }
-
-            .curriculum-column h3 {
-                font-size: 16px;
-            }
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-
-        footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 28px 48px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            font-family: var(--mono-font);
-            font-size: 12px;
-            color: var(--text-tertiary);
-        }
-
-        footer a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 300ms ease;
-        }
-
-        footer a:hover {
-            color: var(--accent);
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN
-           ============================================ */
-
-        @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .hero-image {
-                max-width: 300px;
-            }
-
-            .stack-cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            header {
-                padding: 16px 24px;
-            }
-
-            nav {
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .stack-cards {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 16px;
-                padding: 20px 24px;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-            }
-
-            nav {
-                width: 100%;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .hero,
-            .projects-section {
-                padding: 48px 24px;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -554,6 +20,7 @@
             <a href="#perfil">Perfil</a>
             <a href="#projetos">Projetos</a>
             <a href="#curriculum">Currículo</a>
+            <button class="theme-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
         </nav>
     </header>
@@ -695,6 +162,28 @@
                 </div>
             </div>
         </div>
+
+        <!-- Certifications Section -->
+        <div class="certifications-section">
+            <h3>Certificações</h3>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <div class="curriculum-position">AWS Certified AI Practitioner</div>
+                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period">Issued Aug 2025 · Expires Aug 2028</div>
+                </div>
+                <div class="certification-item">
+                    <div class="curriculum-position">AWS Certified Solutions Architect - Associate</div>
+                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period">Issued Nov 2023 · Expires Nov 2026</div>
+                </div>
+                <div class="certification-item">
+                    <div class="curriculum-position">AWS Certified Cloud Practitioner</div>
+                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period">Issued Jul 2022 · Expired Jul 2025</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -704,6 +193,30 @@
     </footer>
 
     <script>
+        // Dark mode management
+        function initializeDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark-mode');
+                updateThemeToggleButton();
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDarkMode = document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+            updateThemeToggleButton();
+        }
+
+        function updateThemeToggleButton() {
+            const button = document.querySelector('.theme-toggle');
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            button.textContent = isDarkMode ? '☀️' : '🌙';
+        }
+
+        // Initialize dark mode on page load
+        initializeDarkMode();
+
         let currentLang = 'pt';
 
         const translations = {
