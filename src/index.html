@@ -17,10 +17,10 @@
     <header>
         <div class="navbar-brand">LR</div>
         <nav>
-            <a href="#perfil">Perfil</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#curriculum">Currículo</a>
-            <a href="https://www.linkedin.com/in/leonardosantosrocha/" target="_blank" rel="noopener noreferrer">Contato</a>
+            <a href="#perfil" data-i18n="nav.perfil">Perfil</a>
+            <a href="#projetos" data-i18n="nav.projetos">Projetos</a>
+            <a href="#curriculum" data-i18n="nav.curriculum">Currículo</a>
+            <a href="https://www.linkedin.com/in/leonardosantosrocha/" target="_blank" rel="noopener noreferrer" data-i18n="nav.contato">Contato</a>
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
             <button class="lang-toggle" id="langToggle" aria-label="Change language">🇧🇷</button>
         </nav>
@@ -29,9 +29,9 @@
     <!-- HERO SECTION -->
     <section id="perfil" class="hero">
         <div class="hero-content">
-            <div class="section-label">00 / Perfil</div>
+            <div class="section-label" data-i18n="sections.sectionPerfil">00 / Perfil</div>
             <h1>Leonardo Rocha</h1>
-            <p class="hero-bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
+            <p class="hero-bio" data-i18n="hero.bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
             <!-- Skills Cards -->
             <div class="skills-grid">
                 <div class="skill-badge">AWS</div>
@@ -50,12 +50,12 @@
     <!-- PROJECTS SECTION -->
     <section id="projetos" class="projects-section">
         <div class="projects-header">
-            <div class="section-label">01 / Projetos</div>
+            <div class="section-label" data-i18n="sections.sectionProjetos">01 / Projetos</div>
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-title">Página Pessoal</div>
-                <p class="project-desc">Portfólio técnico minimalista construído com HTML, CSS, JavaScript e Claude Code. Design responsivo, suporte bilíngue e dark mode automático.</p>
+                <div class="project-title" data-i18n="projects.project1Title">Página Pessoal</div>
+                <p class="project-desc" data-i18n="projects.project1Desc">Portfólio técnico minimalista construído com HTML, CSS, JavaScript e Claude Code. Design responsivo, suporte bilíngue e dark mode automático.</p>
                 <div class="project-tags">
                     <div class="tag">AWS</div>
                     <div class="tag">HTML</div>
@@ -63,55 +63,55 @@
                     <div class="tag">JavaScript</div>
                     <div class="tag">Claude Code</div>
                 </div>
-                <a href="https://github.com/leonardosantosrocha/claude-my-personal-web-page" target="_blank" rel="noopener noreferrer" class="project-link">Ver repositório →</a>
+                <a href="https://github.com/leonardosantosrocha/claude-my-personal-web-page" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="projects.project1Link">Ver repositório →</a>
             </div>
             <div class="project-card">
-                <div class="project-title">Em desenvolvimento</div>
-                <p class="project-desc">Novo projeto em desenvolvimento. Em breve mais informações.</p>
+                <div class="project-title" data-i18n="projects.project2Title">Em desenvolvimento</div>
+                <p class="project-desc" data-i18n="projects.project2Desc">Novo projeto em desenvolvimento. Em breve mais informações.</p>
                 <div class="project-tags">
                     <div class="tag">Próximo</div>
                 </div>
-                <a href="#" class="project-link" onclick="return false;">Em breve →</a>
+                <a href="#" class="project-link" onclick="return false;" data-i18n="projects.project2Link">Em breve →</a>
             </div>
         </div>
     </section>
 
     <!-- CURRICULUM SECTION -->
     <section id="curriculum" class="curriculum-section">
-        <div class="section-label">02 / Currículo</div>
+        <div class="section-label" data-i18n="sections.sectionCurriculum">02 / Currículo</div>
         <div class="curriculum-container">
             <!-- Professional Experience -->
             <div class="curriculum-column">
-                <h3>Experiência Profissional</h3>
+                <h3 data-i18n="curriculum.experienceTitle">Experiência Profissional</h3>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Senior Data Engineer - Insurance</div>
-                    <div class="curriculum-company">Itaú Unibanco</div>
-                    <div class="curriculum-period">Mar 2026 - Presente (5 meses)</div>
-                    <div class="curriculum-description">Building scalable data products and platforms on AWS.</div>
+                    <div class="curriculum-position" data-i18n="curriculum.job1Position">Senior Data Engineer - Insurance</div>
+                    <div class="curriculum-company" data-i18n="curriculum.job1Company">Itaú Unibanco</div>
+                    <div class="curriculum-period" data-i18n="curriculum.job1Period">Mar 2026 - Presente (5 meses)</div>
+                    <div class="curriculum-description" data-i18n="curriculum.job1Desc">Building scalable data products and platforms on AWS.</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Senior Analytics Engineer - Cards</div>
-                    <div class="curriculum-company">Itaú Unibanco</div>
-                    <div class="curriculum-period">Mar 2025 - Fev 2026 (1 ano)</div>
-                    <div class="curriculum-description">Creation and improvement of centralized indicators dashboards. Development of best practices in AWS services.</div>
+                    <div class="curriculum-position" data-i18n="curriculum.job2Position">Senior Analytics Engineer - Cards</div>
+                    <div class="curriculum-company" data-i18n="curriculum.job2Company">Itaú Unibanco</div>
+                    <div class="curriculum-period" data-i18n="curriculum.job2Period">Mar 2025 - Fev 2026 (1 ano)</div>
+                    <div class="curriculum-description" data-i18n="curriculum.job2Desc">Creation and improvement of centralized indicators dashboards. Development of best practices in AWS services.</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Mid Level Analytics Engineer - Cards</div>
-                    <div class="curriculum-company">Itaú Unibanco</div>
-                    <div class="curriculum-period">Mar 2024 - Fev 2025 (1 ano)</div>
-                    <div class="curriculum-description">Designed end-to-end data product processing 500M+ daily events. Built pipelines to transform raw navigation data into customer behavior metrics.</div>
+                    <div class="curriculum-position" data-i18n="curriculum.job3Position">Mid Level Analytics Engineer - Cards</div>
+                    <div class="curriculum-company" data-i18n="curriculum.job3Company">Itaú Unibanco</div>
+                    <div class="curriculum-period" data-i18n="curriculum.job3Period">Mar 2024 - Fev 2025 (1 ano)</div>
+                    <div class="curriculum-description" data-i18n="curriculum.job3Desc">Designed end-to-end data product processing 500M+ daily events. Built pipelines to transform raw navigation data into customer behavior metrics.</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Entry Level Analytics Engineer - Cards</div>
-                    <div class="curriculum-company">Itaú Unibanco</div>
-                    <div class="curriculum-period">Jul 2022 - Fev 2024 (1 ano 8 meses)</div>
-                    <div class="curriculum-description">Designed internal web application to standardize project documentation. Automated generation reducing effort by 30% and increasing coverage to 95%.</div>
+                    <div class="curriculum-position" data-i18n="curriculum.job4Position">Entry Level Analytics Engineer - Cards</div>
+                    <div class="curriculum-company" data-i18n="curriculum.job4Company">Itaú Unibanco</div>
+                    <div class="curriculum-period" data-i18n="curriculum.job4Period">Jul 2022 - Fev 2024 (1 ano 8 meses)</div>
+                    <div class="curriculum-description" data-i18n="curriculum.job4Desc">Designed internal web application to standardize project documentation. Automated generation reducing effort by 30% and increasing coverage to 95%.</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Data Analyst Intern - Insurance</div>
-                    <div class="curriculum-company">Itaú Unibanco</div>
-                    <div class="curriculum-period">Jan 2021 - Jun 2022 (1 ano 6 meses)</div>
-                    <div class="curriculum-description">Designed automated data pipeline for customer retention analysis. Processed 100K+ insurance contracts daily with daily dashboard delivery.</div>
+                    <div class="curriculum-position" data-i18n="curriculum.job5Position">Data Analyst Intern - Insurance</div>
+                    <div class="curriculum-company" data-i18n="curriculum.job5Company">Itaú Unibanco</div>
+                    <div class="curriculum-period" data-i18n="curriculum.job5Period">Jan 2021 - Jun 2022 (1 ano 6 meses)</div>
+                    <div class="curriculum-description" data-i18n="curriculum.job5Desc">Designed automated data pipeline for customer retention analysis. Processed 100K+ insurance contracts daily with daily dashboard delivery.</div>
                 </div>
             </div>
 
@@ -120,44 +120,44 @@
 
             <!-- Education -->
             <div class="curriculum-column">
-                <h3>Formação Acadêmica</h3>
+                <h3 data-i18n="curriculum.educationTitle">Formação Acadêmica</h3>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Especialização em Data Engineering e Big Data</div>
-                    <div class="curriculum-company">Escola Politécnica da USP</div>
-                    <div class="curriculum-period">Fev 2026 - Fev 2028</div>
+                    <div class="curriculum-position" data-i18n="curriculum.edu1Position">Especialização em Data Engineering e Big Data</div>
+                    <div class="curriculum-company" data-i18n="curriculum.edu1Company">Escola Politécnica da USP</div>
+                    <div class="curriculum-period" data-i18n="curriculum.edu1Period">Fev 2026 - Fev 2028</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Especialização em Data Science & Inteligência Artificial</div>
-                    <div class="curriculum-company">FIAP</div>
-                    <div class="curriculum-period">Abr 2024 - Abr 2025</div>
+                    <div class="curriculum-position" data-i18n="curriculum.edu2Position">Especialização em Data Science & Inteligência Artificial</div>
+                    <div class="curriculum-company" data-i18n="curriculum.edu2Company">FIAP</div>
+                    <div class="curriculum-period" data-i18n="curriculum.edu2Period">Abr 2024 - Abr 2025</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Bacharelado em Ciência da Computação</div>
-                    <div class="curriculum-company">Universidade Presbiteriana Mackenzie</div>
-                    <div class="curriculum-period">Jan 2020 - Dez 2023</div>
+                    <div class="curriculum-position" data-i18n="curriculum.edu3Position">Bacharelado em Ciência da Computação</div>
+                    <div class="curriculum-company" data-i18n="curriculum.edu3Company">Universidade Presbiteriana Mackenzie</div>
+                    <div class="curriculum-period" data-i18n="curriculum.edu3Period">Jan 2020 - Dez 2023</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">Técnico em Programação</div>
-                    <div class="curriculum-company">Instituto Tecnológico de Barueri</div>
-                    <div class="curriculum-period">Jan 2017 - Dez 2019</div>
+                    <div class="curriculum-position" data-i18n="curriculum.edu4Position">Técnico em Programação</div>
+                    <div class="curriculum-company" data-i18n="curriculum.edu4Company">Instituto Tecnológico de Barueri</div>
+                    <div class="curriculum-period" data-i18n="curriculum.edu4Period">Jan 2017 - Dez 2019</div>
                 </div>
 
                 <!-- Certifications -->
-                <h3 class="certifications-title">Certificações</h3>
+                <h3 class="certifications-title" data-i18n="curriculum.certificationsTitle">Certificações</h3>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">AWS Certified AI Practitioner</div>
-                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
-                    <div class="curriculum-period">Issued Aug 2025 · Expires Aug 2028</div>
+                    <div class="curriculum-position" data-i18n="curriculum.cert1Position">AWS Certified AI Practitioner</div>
+                    <div class="curriculum-company" data-i18n="curriculum.cert1Company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period" data-i18n="curriculum.cert1Period">Issued Aug 2025 · Expires Aug 2028</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">AWS Certified Solutions Architect - Associate</div>
-                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
-                    <div class="curriculum-period">Issued Nov 2023 · Expires Nov 2026</div>
+                    <div class="curriculum-position" data-i18n="curriculum.cert2Position">AWS Certified Solutions Architect - Associate</div>
+                    <div class="curriculum-company" data-i18n="curriculum.cert2Company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period" data-i18n="curriculum.cert2Period">Issued Nov 2023 · Expires Nov 2026</div>
                 </div>
                 <div class="curriculum-item">
-                    <div class="curriculum-position">AWS Certified Cloud Practitioner</div>
-                    <div class="curriculum-company">Amazon Web Services (AWS)</div>
-                    <div class="curriculum-period">Issued Jul 2022 · Expired Jul 2025</div>
+                    <div class="curriculum-position" data-i18n="curriculum.cert3Position">AWS Certified Cloud Practitioner</div>
+                    <div class="curriculum-company" data-i18n="curriculum.cert3Company">Amazon Web Services (AWS)</div>
+                    <div class="curriculum-period" data-i18n="curriculum.cert3Period">Issued Jul 2022 · Expired Jul 2025</div>
                 </div>
             </div>
         </div>
@@ -165,8 +165,8 @@
 
     <!-- FOOTER -->
     <footer>
-        <div>© 2026 Leonardo Rocha. Todos os direitos reservados.</div>
-        <a href="#perfil">Voltar ao topo ↑</a>
+        <div data-i18n="footer.copy">© 2026 Leonardo Rocha. Todos os direitos reservados.</div>
+        <a href="#perfil" data-i18n="footer.topLink">Voltar ao topo ↑</a>
     </footer>
 
     <script>
@@ -193,31 +193,20 @@
 
         // Language management
         let currentLang = localStorage.getItem('language') || 'pt';
+        let translations = {};
 
-        const translations = {
-            pt: {
-                perfil: 'Perfil',
-                projetos: 'Projetos',
-                curriculum: 'Currículo',
-                sectionPerfil: '00 / Perfil',
-                sectionProjetos: '01 / Projetos',
-                sectionCurriculum: '02 / Currículo',
-                heroBio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.',
-                footerCopy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
-                footerTop: 'Voltar ao topo ↑',
-            },
-            en: {
-                perfil: 'Profile',
-                projetos: 'Projects',
-                curriculum: 'Resume',
-                sectionPerfil: '00 / Profile',
-                sectionProjetos: '01 / Projects',
-                sectionCurriculum: '02 / Curriculum',
-                heroBio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.',
-                footerCopy: '© 2026 Leonardo Rocha. All rights reserved.',
-                footerTop: 'Back to top ↑',
+        async function loadTranslations() {
+            try {
+                const response = await fetch('translations.json');
+                translations = await response.json();
+            } catch (error) {
+                console.error('Error loading translations:', error);
             }
-        };
+        }
+
+        function getNestedValue(obj, path) {
+            return path.split('.').reduce((current, prop) => current?.[prop], obj);
+        }
 
         function toggleLanguage() {
             currentLang = currentLang === 'pt' ? 'en' : 'pt';
@@ -226,41 +215,36 @@
         }
 
         function updateLanguage() {
-            const t = translations[currentLang];
             const htmlElement = document.documentElement;
 
             // Update html lang attribute
             htmlElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
 
-            // Update navigation
-            document.querySelectorAll('nav a').forEach((link, idx) => {
-                const keys = ['perfil', 'projetos', 'curriculum'];
-                if (idx < 3) link.textContent = t[keys[idx]];
-            });
-
             // Update language button with flag
             const langButton = document.getElementById('langToggle');
             langButton.textContent = currentLang === 'pt' ? '🇺🇸' : '🇧🇷';
 
-            // Update section labels
-            document.querySelectorAll('.section-label').forEach((label, idx) => {
-                const keys = ['sectionPerfil', 'sectionProjetos', 'sectionCurriculum'];
-                if (idx < 4) label.textContent = t[keys[idx]];
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translatedText = getNestedValue(translations[currentLang], key);
+                if (translatedText) {
+                    element.textContent = translatedText;
+                }
             });
-
-            // Update hero bio
-            document.querySelector('.hero-bio').textContent = t.heroBio;
-
-            // Update footer
-            document.querySelector('footer > div:first-child').textContent = t.footerCopy;
-            document.querySelector('footer a').textContent = t.footerTop;
         }
 
         // Initialize
         document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
         document.getElementById('langToggle').addEventListener('click', toggleLanguage);
-        initializeDarkMode();
-        updateLanguage();
+
+        async function init() {
+            await loadTranslations();
+            initializeDarkMode();
+            updateLanguage();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
