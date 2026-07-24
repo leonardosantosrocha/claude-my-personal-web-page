@@ -36,7 +36,7 @@ const translations = {
             sectionCurriculum: '02 / Currículo'
         },
         hero: {
-            bio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics IA no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.'
+            bio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.'
         },
         projects: {
             project1Title: 'Página Pessoal',
@@ -53,7 +53,7 @@ const translations = {
             job1Position: 'Engenheiro de Dados e IA',
             job1Company: 'Itaú Unibanco',
             job1Period: 'Mar 2026 - Presente',
-            job1Desc: 'Atuo na construção de agentes de IA que otimizam o fluxo de tarefas dos analistas, cientistas e engenheiros de dados. Stack técnica: AWS, Claude e Devin.',
+            job1Desc: 'Atuo na construção/reuso de agentes de IA que otimizam o fluxo de trabalho dos analistas, cientistas e engenheiros de dados. Com isso, reduzimos esforço operacional e liberamos tempo para que foquem em atividades mais complexas. Stack técnica: AWS, Claude e Devin.',
             job2Position: 'Engenheiro de Analytics Sênior',
             job2Company: 'Itaú Unibanco',
             job2Period: '2025 - 2026',
@@ -127,11 +127,11 @@ const translations = {
             job1Position: 'Data Engineer & AI',
             job1Company: 'Itaú Unibanco',
             job1Period: 'Mar 2026 - Present',
-            job1Desc: 'Building AI agents to optimize task workflows for analysts, scientists and data engineers. Stack: AWS, Claude, Devin.',
+            job1Desc: 'Building/reusing AI agents that optimize the workflow for data analysts, scientists, and engineers. Reduce operational effort and free up time so they can focus on complex activities. Tech stack: AWS, Claude, and Devin.',
             job2Position: 'Senior Analytics Engineer',
             job2Company: 'Itaú Unibanco',
             job2Period: '2025 - 2026',
-            job2Desc: 'Developed pipeline to capture queries executed via AWS Athena. Built dashboard to monitor and optimize cost-intensive processes (30%+ reduction) and drive data culture adoption. Stack: Python, Athena, Glue, S3, Quicksight.',
+            job2Desc: 'Developed pipeline to capture Athena queries. Built dashboard to monitor and optimize cost-intensive processes (30%+ reduction) and drive data culture adoption. Stack: Python, Athena, Glue, S3, Quicksight.',
             job3Position: 'Mid Level Analytics Engineer',
             job3Company: 'Itaú Unibanco',
             job3Period: '2024 - 2025',

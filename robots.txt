@@ -2,6 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://leonardorocha.dev/sitemap.xml
-
-Disallow: /admin
-Disallow: /api

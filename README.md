@@ -1,8 +1,7 @@
 # Claude's Personal Portfolio
 
-Portfólio técnico minimalista de Leonardo Rocha — Data Engineer & AI Products. Construído com HTML, CSS, JavaScript puro e hospedado em AWS.
+Portfólio técnico minimalista construído com HTML, CSS, JavaScript puro e hospedado em AWS.
 
----
 
 ## 📂 Estrutura do Projeto
 
@@ -16,7 +15,6 @@ claude-my-personal-web-page/
 │   │   └── main.css        # Estilos CSS
 │   └── assets/
 │       └── images/         # Logo, foto
-├── .claude/                # Configurações Claude Code
 ├── robots.txt              # SEO crawlers
 ├── sitemap.xml             # Mapa do site
 └── README.md               # Este arquivo
@@ -34,7 +32,5 @@ claude-my-personal-web-page/
 - Internacionalização nativa (PT/BR ↔ EN)
 - Dark mode automático com override manual
 - Design responsivo mobile-first
-- Zero dependências externas
-- SEO otimizado (robots.txt, sitemap.xml)
 
 **Trade-offs:** Máxima performance e simplicidade vs. sem features de SPA
