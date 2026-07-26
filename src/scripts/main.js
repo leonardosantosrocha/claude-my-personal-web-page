@@ -1,10 +1,18 @@
 // Dark mode management
 function initializeDarkMode() {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (isDarkMode) {
+    // Always start with light mode (dark mode disabled)
+    const darkModeValue = localStorage.getItem('darkMode');
+
+    // Only enable dark mode if explicitly set to 'true' in localStorage
+    if (darkModeValue === 'true') {
         document.documentElement.classList.add('dark-mode');
     } else {
+        // Default to light mode - always remove dark-mode class
         document.documentElement.classList.remove('dark-mode');
+        // Initialize localStorage to 'false' for consistency
+        if (!darkModeValue) {
+            localStorage.setItem('darkMode', 'false');
+        }
     }
     updateThemeToggleButton();
 }
