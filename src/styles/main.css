@@ -22,6 +22,9 @@ html {
     --border: oklch(85% 0.005 90);
     --mono-font: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
     --sans-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --transition-base: 300ms ease;
+    --shadow-accent-tint: color-mix(in srgb, var(--accent) 10%, transparent);
+    --fs-heading-sm: clamp(15px, 3vw, 18px);
 }
 
 html.dark-mode {
@@ -44,7 +47,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
-    transition: background-color 300ms ease, color 300ms ease;
+    transition: background-color var(--transition-base), color var(--transition-base);
     overflow-x: hidden;
 }
 
@@ -56,21 +59,24 @@ header {
     position: sticky;
     top: 0;
     z-index: 20;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px 12px;
-    background: var(--bg-primary) / 0.95;
+    background: color-mix(in oklch, var(--bg-primary) 95%, transparent);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    transition: background-color 300ms ease, border-color 300ms ease;
+    transition: background-color var(--transition-base), border-color var(--transition-base);
 }
 
 .navbar-brand {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
+    padding: 10px 12px;
 }
 
 .navbar-logo {
@@ -79,46 +85,14 @@ header {
     display: block;
 }
 
-/* Mobile Menu Styles */
-nav {
-    position: fixed;
-    top: 52px;
-    left: 0;
-    right: 0;
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border);
+/* Header Controls (hamburger menu trigger) - Mobile */
+.header-controls {
+    grid-column: 3;
+    grid-row: 1;
     display: flex;
-    flex-direction: column;
-    gap: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 300ms ease;
-    z-index: 19;
-}
-
-nav.active {
-    max-height: 400px;
-}
-
-nav a {
-    color: var(--text-primary);
-    text-decoration: none;
-    padding: 14px 16px;
-    font-family: var(--mono-font);
-    font-size: 13px;
-    border-bottom: 1px solid var(--border);
-    transition: color 300ms ease, background-color 300ms ease;
-    display: block;
-}
-
-nav a:hover,
-nav a:focus {
-    color: var(--accent);
-    background-color: var(--bg-secondary);
-}
-
-nav a:last-of-type {
-    border-bottom: none;
+    align-items: center;
+    gap: 4px;
+    padding-right: 8px;
 }
 
 /* Hamburger Menu Toggle Button */
@@ -129,8 +103,12 @@ nav a:last-of-type {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px;
+    padding: 6px 8px;
     flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-toggle span {
@@ -138,7 +116,11 @@ nav a:last-of-type {
     height: 2px;
     background: var(--text-primary);
     border-radius: 1px;
-    transition: all 300ms ease;
+    transition: background-color var(--transition-base), transform var(--transition-base), opacity var(--transition-base);
+}
+
+.menu-toggle:hover span {
+    background: var(--accent);
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -156,20 +138,20 @@ nav a:last-of-type {
 .lang-toggle,
 .theme-toggle {
     font-family: inherit;
-    font-size: 13px;
     background: none;
     border: 1px solid var(--text-primary);
     border-radius: 16px;
-    padding: 6px 10px;
+    padding: 4px 8px;
     cursor: pointer;
     color: var(--text-primary);
-    transition: all 300ms ease;
+    transition: color var(--transition-base), border-color var(--transition-base);
     flex-shrink: 0;
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 12px;
 }
 
 .lang-toggle:hover,
@@ -178,10 +160,52 @@ nav a:last-of-type {
     border-color: var(--accent);
 }
 
-/* Hide theme and lang toggle from nav in mobile */
-nav .theme-toggle,
-nav .lang-toggle {
-    display: none;
+/* Mobile Menu Styles */
+nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+}
+
+nav.active {
+    max-height: 400px;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 12px 16px;
+    font-family: var(--mono-font);
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    transition: color var(--transition-base), background-color var(--transition-base);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--accent);
+    background-color: var(--bg-secondary);
+}
+
+nav a:last-of-type {
+    border-bottom: none;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
 }
 
 /* ============================================
@@ -223,7 +247,6 @@ nav .lang-toggle {
 
 /* Skills Grid - Mobile First */
 .skills-grid {
-    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -235,12 +258,15 @@ nav .lang-toggle {
     gap: 12px;
 }
 
+.hero-image-container picture {
+    display: block;
+}
+
 .hero-image {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 4px;
-    max-height: 240px;
 }
 
 /* ============================================
@@ -260,13 +286,13 @@ nav .lang-toggle {
     font-weight: 600;
     color: var(--text-primary);
     text-align: center;
-    transition: all 300ms ease;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
     min-height: 36px;
 }
 
 .skill-badge:hover {
     border-color: var(--accent);
-    box-shadow: 0 8px 16px color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: 0 8px 16px var(--shadow-accent-tint);
 }
 
 @media (hover: none) {
@@ -276,7 +302,7 @@ nav .lang-toggle {
 
     .skill-badge:active {
         border-color: var(--accent);
-        box-shadow: 0 8px 16px color-mix(in srgb, var(--accent) 10%, transparent);
+        box-shadow: 0 8px 16px var(--shadow-accent-tint);
     }
 }
 
@@ -289,7 +315,7 @@ nav .lang-toggle {
     margin: 0 auto;
     padding: 28px 12px;
     border-top: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .projects-header {
@@ -307,7 +333,7 @@ nav .lang-toggle {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 4px;
-    transition: all 300ms ease;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -315,18 +341,18 @@ nav .lang-toggle {
 
 .project-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: 0 12px 24px var(--shadow-accent-tint);
 }
 
 @media (hover: none) {
     .project-card:active {
         border-color: var(--accent);
-        box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+        box-shadow: 0 12px 24px var(--shadow-accent-tint);
     }
 }
 
 .project-title {
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -352,13 +378,6 @@ nav .lang-toggle {
     border-radius: 12px;
     padding: 6px 12px;
     background: transparent;
-    transition: all 300ms ease;
-    cursor: pointer;
-}
-
-.tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
 }
 
 .project-link {
@@ -366,7 +385,7 @@ nav .lang-toggle {
     font-size: clamp(11px, 2vw, 13px);
     color: var(--accent);
     text-decoration: none;
-    transition: all 300ms ease;
+    transition: color var(--transition-base);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -379,6 +398,15 @@ nav .lang-toggle {
     color: var(--text-primary);
 }
 
+.project-link.is-disabled {
+    color: var(--text-tertiary);
+    cursor: default;
+}
+
+.project-link.is-disabled:hover {
+    color: var(--text-tertiary);
+}
+
 /* ============================================
    MOBILE-FIRST: CURRICULUM SECTION
    ============================================ */
@@ -388,7 +416,7 @@ nav .lang-toggle {
     margin: 0 auto;
     padding: 28px 12px;
     border-top: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .curriculum-container {
@@ -404,7 +432,7 @@ nav .lang-toggle {
     width: 1px;
     height: 100%;
     min-height: 600px;
-    transition: background-color 300ms ease;
+    transition: background-color var(--transition-base);
 }
 
 .curriculum-column {
@@ -413,7 +441,7 @@ nav .lang-toggle {
 }
 
 .curriculum-column h3 {
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     margin-bottom: 16px;
     color: var(--text-primary);
@@ -422,7 +450,7 @@ nav .lang-toggle {
 .certifications-title {
     margin-top: 20px;
     margin-bottom: 16px;
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -431,7 +459,7 @@ nav .lang-toggle {
     padding-bottom: 14px;
     margin-bottom: 14px;
     border-bottom: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .curriculum-item:last-child {
@@ -483,13 +511,13 @@ footer {
     font-family: var(--mono-font);
     font-size: clamp(10px, 2vw, 12px);
     color: var(--text-tertiary);
-    transition: border-color 300ms ease, color 300ms ease;
+    transition: border-color var(--transition-base), color var(--transition-base);
 }
 
 footer a {
     color: inherit;
     text-decoration: none;
-    transition: color 300ms ease;
+    transition: color var(--transition-base);
     padding: 6px 0;
     display: inline-block;
     min-height: 44px;
@@ -505,15 +533,29 @@ footer a:hover {
 
 @media (min-width: 640px) {
     header {
-        padding: 14px 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+    }
+
+    .navbar-brand {
+        padding: 0;
     }
 
     .navbar-logo {
         height: 28px;
     }
 
-    .menu-toggle {
+    .header-controls {
         display: none;
+    }
+
+    .lang-toggle,
+    .theme-toggle {
+        padding: 6px 10px;
+        font-size: 13px;
     }
 
     nav {
@@ -524,8 +566,16 @@ footer a:hover {
         align-items: center;
         gap: 8px;
         background: none;
-        border-bottom: none;
+        border-top: none;
         padding: 0;
+        display: flex;
+    }
+
+    .nav-controls {
+        border-top: none;
+        padding: 0;
+        gap: 8px;
+        margin-left: 4px;
     }
 
     nav a {
@@ -534,17 +584,13 @@ footer a:hover {
         font-size: clamp(11px, 2vw, 13px);
         color: var(--text-primary);
         min-height: auto;
+        display: inline-flex;
     }
 
     nav a:hover,
     nav a:focus {
         color: var(--accent);
         background: none;
-    }
-
-    nav .theme-toggle,
-    nav .lang-toggle {
-        display: flex;
     }
 
     .hero {
@@ -594,14 +640,34 @@ footer a:hover {
 
 @media (min-width: 768px) {
     header {
-        padding: 16px 28px;
-        gap: 24px;
+        padding: 14px 28px;
+    }
+
+    nav {
+        gap: 12px;
     }
 
     .hero {
         padding: 56px 28px 44px;
         gap: 32px;
         grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: auto auto;
+    }
+
+    .hero-content {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .skills-grid {
+        grid-column: 1;
+        grid-row: 2;
+        gap: 12px;
+    }
+
+    .hero-image-container {
+        grid-column: 2;
+        grid-row: 1 / span 2;
     }
 
     .section-label {
@@ -612,11 +678,6 @@ footer a:hover {
     .hero-bio {
         font-size: 15px;
         margin-top: 16px;
-    }
-
-    .skills-grid {
-        gap: 12px;
-        margin-top: 24px;
     }
 
     .hero-image {
@@ -664,8 +725,7 @@ footer a:hover {
 
 @media (min-width: 1024px) {
     header {
-        gap: 32px;
-        padding: 18px 40px;
+        padding: 16px 40px;
     }
 
     .navbar-logo {
@@ -679,6 +739,7 @@ footer a:hover {
     nav a {
         padding: 0;
         font-size: 13px;
+        min-height: auto;
     }
 
     .hero {
@@ -706,7 +767,6 @@ footer a:hover {
     .skills-grid {
         grid-template-columns: repeat(6, 1fr);
         gap: 16px;
-        margin-top: 32px;
     }
 
     .skill-badge {
@@ -759,10 +819,6 @@ footer a:hover {
         gap: 40px;
     }
 
-    .curriculum-divider {
-        min-height: 600px;
-    }
-
     .curriculum-column h3 {
         font-size: 17px;
         margin-bottom: 24px;
@@ -809,7 +865,7 @@ footer a:hover {
 
 @media (min-width: 1440px) {
     header {
-        padding: 20px 64px;
+        padding: 16px 64px;
     }
 
     .hero {
@@ -835,6 +891,10 @@ footer a:hover {
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     * {
         animation: none !important;
         transition: none !important;
