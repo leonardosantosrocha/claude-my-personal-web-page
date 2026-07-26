@@ -12,6 +12,10 @@
     <title>Leonardo Rocha</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="stylesheet" href="styles/main.css">
+    <script>
+        // Ensure light mode is default - run before page renders
+        document.documentElement.classList.remove('dark-mode');
+    </script>
 </head>
 <body>
     <!-- HEADER -->
@@ -37,12 +41,12 @@
             <p class="hero-bio" data-i18n="hero.bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
             <!-- Skills Cards -->
             <div class="skills-grid">
+                <div class="skill-badge">AI</div>
                 <div class="skill-badge">AWS</div>
                 <div class="skill-badge">Python</div>
                 <div class="skill-badge">Spark</div>
                 <div class="skill-badge">SQL</div>
                 <div class="skill-badge">Terraform</div>
-                <div class="skill-badge">IA</div>
             </div>
         </div>
         <div class="hero-image-container">

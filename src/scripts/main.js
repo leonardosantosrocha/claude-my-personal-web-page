@@ -3,8 +3,10 @@ function initializeDarkMode() {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     if (isDarkMode) {
         document.documentElement.classList.add('dark-mode');
-        updateThemeToggleButton();
+    } else {
+        document.documentElement.classList.remove('dark-mode');
     }
+    updateThemeToggleButton();
 }
 
 function toggleDarkMode() {
