@@ -422,6 +422,7 @@ nav a:hover {
     font-size: clamp(12px, 2.2vw, 14px);
     line-height: 1.5;
     color: var(--text-secondary);
+    white-space: pre-line;
 }
 
 
@@ -724,6 +725,7 @@ footer a:hover {
 
     .curriculum-description {
         font-size: 14px;
+        white-space: pre-line;
     }
 
     footer {
@@ -868,6 +870,7 @@ footer a:hover {
 
     .curriculum-description {
         font-size: 14px;
+        white-space: pre-line;
     }
 
     footer {
