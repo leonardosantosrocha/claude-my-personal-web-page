@@ -1,3 +1,32 @@
+// Mobile Menu Management
+function initializeMenuToggle() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = navMenu.querySelectorAll('a');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 640) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
 // Dark mode management
 function initializeDarkMode() {
     // Always start with light mode (dark mode disabled)
@@ -215,6 +244,7 @@ function updateLanguage() {
 
 // Initialize
 function init() {
+    initializeMenuToggle();
     document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
     document.getElementById('langToggle').addEventListener('click', toggleLanguage);
     initializeDarkMode();
