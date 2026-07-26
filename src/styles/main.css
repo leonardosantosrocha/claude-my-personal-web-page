@@ -22,6 +22,9 @@ html {
     --border: oklch(85% 0.005 90);
     --mono-font: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
     --sans-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --transition-base: 300ms ease;
+    --shadow-accent-tint: color-mix(in srgb, var(--accent) 10%, transparent);
+    --fs-heading-sm: clamp(15px, 3vw, 18px);
 }
 
 html.dark-mode {
@@ -44,7 +47,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
-    transition: background-color 300ms ease, color 300ms ease;
+    transition: background-color var(--transition-base), color var(--transition-base);
     overflow-x: hidden;
 }
 
@@ -56,15 +59,19 @@ header {
     position: sticky;
     top: 0;
     z-index: 20;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-primary) / 0.95;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    background: color-mix(in oklch, var(--bg-primary) 95%, transparent);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    transition: background-color 300ms ease, border-color 300ms ease;
+    transition: background-color var(--transition-base), border-color var(--transition-base);
 }
 
 .navbar-brand {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -78,14 +85,14 @@ header {
     display: block;
 }
 
-/* Header Controls (theme, lang, menu) - Mobile */
+/* Header Controls (hamburger menu trigger) - Mobile */
 .header-controls {
-    position: absolute;
-    top: 10px;
-    right: 8px;
+    grid-column: 3;
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 4px;
+    padding-right: 8px;
 }
 
 /* Hamburger Menu Toggle Button */
@@ -98,8 +105,8 @@ header {
     cursor: pointer;
     padding: 6px 8px;
     flex-shrink: 0;
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 44px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
 }
@@ -109,7 +116,7 @@ header {
     height: 2px;
     background: var(--text-primary);
     border-radius: 1px;
-    transition: all 300ms ease;
+    transition: background-color var(--transition-base), transform var(--transition-base), opacity var(--transition-base);
 }
 
 .menu-toggle:hover span {
@@ -131,17 +138,16 @@ header {
 .lang-toggle,
 .theme-toggle {
     font-family: inherit;
-    font-size: 13px;
     background: none;
     border: 1px solid var(--text-primary);
     border-radius: 16px;
     padding: 4px 8px;
     cursor: pointer;
     color: var(--text-primary);
-    transition: all 300ms ease;
+    transition: color var(--transition-base), border-color var(--transition-base);
     flex-shrink: 0;
-    min-width: 32px;
-    min-height: 32px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,12 +162,13 @@ header {
 
 /* Mobile Menu Styles */
 nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 300ms ease;
+    transition: max-height var(--transition-base);
     display: flex;
     flex-direction: column;
-    gap: 0;
     background: var(--bg-primary);
     border-top: 1px solid var(--border);
 }
@@ -177,8 +184,7 @@ nav a {
     font-family: var(--mono-font);
     font-size: 13px;
     border-bottom: 1px solid var(--border);
-    transition: color 300ms ease, background-color 300ms ease;
-    display: block;
+    transition: color var(--transition-base), background-color var(--transition-base);
     min-height: 44px;
     display: flex;
     align-items: center;
@@ -192,6 +198,14 @@ nav a:focus {
 
 nav a:last-of-type {
     border-bottom: none;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
 }
 
 /* ============================================
@@ -233,7 +247,6 @@ nav a:last-of-type {
 
 /* Skills Grid - Mobile First */
 .skills-grid {
-    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -245,12 +258,15 @@ nav a:last-of-type {
     gap: 12px;
 }
 
+.hero-image-container picture {
+    display: block;
+}
+
 .hero-image {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 4px;
-    max-height: 240px;
 }
 
 /* ============================================
@@ -270,13 +286,13 @@ nav a:last-of-type {
     font-weight: 600;
     color: var(--text-primary);
     text-align: center;
-    transition: all 300ms ease;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
     min-height: 36px;
 }
 
 .skill-badge:hover {
     border-color: var(--accent);
-    box-shadow: 0 8px 16px color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: 0 8px 16px var(--shadow-accent-tint);
 }
 
 @media (hover: none) {
@@ -286,7 +302,7 @@ nav a:last-of-type {
 
     .skill-badge:active {
         border-color: var(--accent);
-        box-shadow: 0 8px 16px color-mix(in srgb, var(--accent) 10%, transparent);
+        box-shadow: 0 8px 16px var(--shadow-accent-tint);
     }
 }
 
@@ -299,7 +315,7 @@ nav a:last-of-type {
     margin: 0 auto;
     padding: 28px 12px;
     border-top: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .projects-header {
@@ -317,7 +333,7 @@ nav a:last-of-type {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 4px;
-    transition: all 300ms ease;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -325,18 +341,18 @@ nav a:last-of-type {
 
 .project-card:hover {
     border-color: var(--accent);
-    box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: 0 12px 24px var(--shadow-accent-tint);
 }
 
 @media (hover: none) {
     .project-card:active {
         border-color: var(--accent);
-        box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+        box-shadow: 0 12px 24px var(--shadow-accent-tint);
     }
 }
 
 .project-title {
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -362,13 +378,6 @@ nav a:last-of-type {
     border-radius: 12px;
     padding: 6px 12px;
     background: transparent;
-    transition: all 300ms ease;
-    cursor: pointer;
-}
-
-.tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
 }
 
 .project-link {
@@ -376,7 +385,7 @@ nav a:last-of-type {
     font-size: clamp(11px, 2vw, 13px);
     color: var(--accent);
     text-decoration: none;
-    transition: all 300ms ease;
+    transition: color var(--transition-base);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -389,6 +398,15 @@ nav a:last-of-type {
     color: var(--text-primary);
 }
 
+.project-link.is-disabled {
+    color: var(--text-tertiary);
+    cursor: default;
+}
+
+.project-link.is-disabled:hover {
+    color: var(--text-tertiary);
+}
+
 /* ============================================
    MOBILE-FIRST: CURRICULUM SECTION
    ============================================ */
@@ -398,7 +416,7 @@ nav a:last-of-type {
     margin: 0 auto;
     padding: 28px 12px;
     border-top: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .curriculum-container {
@@ -414,7 +432,7 @@ nav a:last-of-type {
     width: 1px;
     height: 100%;
     min-height: 600px;
-    transition: background-color 300ms ease;
+    transition: background-color var(--transition-base);
 }
 
 .curriculum-column {
@@ -423,7 +441,7 @@ nav a:last-of-type {
 }
 
 .curriculum-column h3 {
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     margin-bottom: 16px;
     color: var(--text-primary);
@@ -432,7 +450,7 @@ nav a:last-of-type {
 .certifications-title {
     margin-top: 20px;
     margin-bottom: 16px;
-    font-size: clamp(15px, 3vw, 18px);
+    font-size: var(--fs-heading-sm);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -441,7 +459,7 @@ nav a:last-of-type {
     padding-bottom: 14px;
     margin-bottom: 14px;
     border-bottom: 1px solid var(--border);
-    transition: border-color 300ms ease;
+    transition: border-color var(--transition-base);
 }
 
 .curriculum-item:last-child {
@@ -493,13 +511,13 @@ footer {
     font-family: var(--mono-font);
     font-size: clamp(10px, 2vw, 12px);
     color: var(--text-tertiary);
-    transition: border-color 300ms ease, color 300ms ease;
+    transition: border-color var(--transition-base), color var(--transition-base);
 }
 
 footer a {
     color: inherit;
     text-decoration: none;
-    transition: color 300ms ease;
+    transition: color var(--transition-base);
     padding: 6px 0;
     display: inline-block;
     min-height: 44px;
@@ -515,6 +533,7 @@ footer a:hover {
 
 @media (min-width: 640px) {
     header {
+        display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -530,13 +549,6 @@ footer a:hover {
     }
 
     .header-controls {
-        position: static;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .menu-toggle {
         display: none;
     }
 
@@ -557,6 +569,13 @@ footer a:hover {
         border-top: none;
         padding: 0;
         display: flex;
+    }
+
+    .nav-controls {
+        border-top: none;
+        padding: 0;
+        gap: 8px;
+        margin-left: 4px;
     }
 
     nav a {
@@ -624,10 +643,6 @@ footer a:hover {
         padding: 14px 28px;
     }
 
-    .header-controls {
-        gap: 16px;
-    }
-
     nav {
         gap: 12px;
     }
@@ -636,6 +651,23 @@ footer a:hover {
         padding: 56px 28px 44px;
         gap: 32px;
         grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: auto auto;
+    }
+
+    .hero-content {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .skills-grid {
+        grid-column: 1;
+        grid-row: 2;
+        gap: 12px;
+    }
+
+    .hero-image-container {
+        grid-column: 2;
+        grid-row: 1 / span 2;
     }
 
     .section-label {
@@ -646,11 +678,6 @@ footer a:hover {
     .hero-bio {
         font-size: 15px;
         margin-top: 16px;
-    }
-
-    .skills-grid {
-        gap: 12px;
-        margin-top: 24px;
     }
 
     .hero-image {
@@ -705,10 +732,6 @@ footer a:hover {
         height: 32px;
     }
 
-    .header-controls {
-        gap: 20px;
-    }
-
     nav {
         gap: 20px;
     }
@@ -744,7 +767,6 @@ footer a:hover {
     .skills-grid {
         grid-template-columns: repeat(6, 1fr);
         gap: 16px;
-        margin-top: 32px;
     }
 
     .skill-badge {
@@ -797,10 +819,6 @@ footer a:hover {
         gap: 40px;
     }
 
-    .curriculum-divider {
-        min-height: 600px;
-    }
-
     .curriculum-column h3 {
         font-size: 17px;
         margin-bottom: 24px;
@@ -850,10 +868,6 @@ footer a:hover {
         padding: 16px 64px;
     }
 
-    .header-controls {
-        gap: 24px;
-    }
-
     .hero {
         padding: 96px 64px 72px;
         gap: 56px;
@@ -877,6 +891,10 @@ footer a:hover {
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     * {
         animation: none !important;
         transition: none !important;

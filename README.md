@@ -5,9 +5,9 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 
 ## ✨ Highlights
 
-- **Bilingual** (Portuguese & English) with smart language detection
+- **Bilingual** (Portuguese & English) with manual toggle, defaults to Portuguese
 - **Mobile-first design** fully responsive across all devices
-- **Dark mode** with automatic system preference detection
+- **Dark mode** with manual toggle, defaults to light mode
 - **SEO-optimized** with structured metadata and semantic HTML
 - **Zero dependencies** - pure vanilla HTML/CSS/JavaScript
 - **Lightning-fast** - hosted on AWS CloudFront CDN
@@ -29,7 +29,7 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 | Frontend | HTML5, CSS3, JavaScript (Vanilla) |
 | Infrastructure | AWS S3 (Static Hosting) + CloudFront (CDN) |
 | Optimization | Mobile-responsive, Dark mode, i18n |
-| SEO | robots.txt, sitemap.xml, semantic HTML |
+| SEO | robots.txt, sitemap.xml, semantic HTML, Open Graph/Twitter meta tags, canonical URL |
 
 
 ## 📁 Project Structure
@@ -43,7 +43,7 @@ claude-my-personal-web-page/
 │   ├── styles/
 │   │   └── main.css            # Responsive design, dark mode
 │   └── assets/
-│       └── images/             # Logo and profile photo
+│       └── images/             # Logo, favicon, and profile photo (WebP + PNG fallback)
 ├── robots.txt                   # SEO crawler configuration
 ├── sitemap.xml                  # XML sitemap for search engines
 └── README.md                    # This file
@@ -118,24 +118,24 @@ Features:
 - Sub-second load times (global edge locations)
 - Automatic cache invalidation on updates
 - Gzip compression enabled
-- Image optimization and lazy loading
+- Image optimization (WebP with PNG fallback for the hero photo)
 
 
 ## 🌍 Features Explained
 
 ### Internationalization (i18n)
-- Automatic browser language detection
+- Defaults to Portuguese (BR)
 - Toggle between Portuguese (BR) and English
 - Preference saved in localStorage
 
 ### Dark Mode
-- Auto-detect system preference (prefers-color-scheme)
+- Defaults to light mode
 - Manual toggle with persistent storage
 - Smooth transitions between themes
 
 ### Responsive Design
 - Mobile-first approach
-- Breakpoints: 360px, 480px, 640px, 768px, 1024px+
+- Breakpoints: 640px, 768px, 1024px, 1440px+
 - Touch-friendly (44px minimum tap targets)
 - Optimized for all modern devices
 

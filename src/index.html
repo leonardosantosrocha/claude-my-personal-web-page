@@ -9,19 +9,25 @@
     <meta property="og:description" content="Engenheiro de Dados e Analytics IA especializado em arquitetura de dados escalável.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leonardorocha.dev">
+    <meta property="og:image" content="https://leonardorocha.dev/assets/images/me.png">
+    <meta property="og:image:width" content="642">
+    <meta property="og:image:height" content="680">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Leonardo Rocha - Data Engineer & AI Products">
+    <meta name="twitter:description" content="Engenheiro de Dados e Analytics IA especializado em arquitetura de dados escalável.">
+    <meta name="twitter:image" content="https://leonardorocha.dev/assets/images/me.png">
+    <link rel="canonical" href="https://leonardorocha.dev/">
     <title>Leonardo Rocha</title>
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <div class="navbar-brand">
-            <img src="assets/images/logo.png" alt="Leonardo Rocha Logo" class="navbar-logo">
+            <img src="assets/images/logo.png" alt="Leonardo Rocha Logo" class="navbar-logo" width="256" height="256">
         </div>
         <div class="header-controls">
-            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
-            <button class="lang-toggle" id="langToggle" aria-label="Change language">🇧🇷</button>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -33,6 +39,10 @@
             <a href="#projetos" data-i18n="nav.projetos">Projetos</a>
             <a href="#curriculum" data-i18n="nav.curriculum">Currículo</a>
             <a href="https://www.linkedin.com/in/leonardosantosrocha/" target="_blank" rel="noopener noreferrer" data-i18n="nav.contato">Contato</a>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+                <button class="lang-toggle" id="langToggle" aria-label="Change language">🇧🇷</button>
+            </div>
         </nav>
     </header>
 
@@ -42,18 +52,21 @@
             <div class="section-label" data-i18n="sections.sectionPerfil">00 / Perfil</div>
             <h1>Leonardo Rocha</h1>
             <p class="hero-bio" data-i18n="hero.bio">Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio times multidisciplinares na adoção da cultura data-driven e na automação de processos utilizando IA.</p>
-            <!-- Skills Cards -->
-            <div class="skills-grid">
-                <div class="skill-badge">AI</div>
-                <div class="skill-badge">AWS</div>
-                <div class="skill-badge">Python</div>
-                <div class="skill-badge">Spark</div>
-                <div class="skill-badge">SQL</div>
-                <div class="skill-badge">Terraform</div>
-            </div>
         </div>
         <div class="hero-image-container">
-            <img src="assets/images/me.png" alt="Leonardo Rocha - Engenheiro de Dados" class="hero-image">
+            <picture>
+                <source srcset="assets/images/me.webp" type="image/webp">
+                <img src="assets/images/me.png" alt="Leonardo Rocha - Engenheiro de Dados" class="hero-image" width="642" height="680">
+            </picture>
+        </div>
+        <!-- Skills Cards -->
+        <div class="skills-grid">
+            <div class="skill-badge">AI</div>
+            <div class="skill-badge">AWS</div>
+            <div class="skill-badge">Python</div>
+            <div class="skill-badge">Spark</div>
+            <div class="skill-badge">SQL</div>
+            <div class="skill-badge">Terraform</div>
         </div>
     </section>
 
@@ -81,7 +94,7 @@
                 <div class="project-tags">
                     <div class="tag">Próximo</div>
                 </div>
-                <a href="#" class="project-link" onclick="return false;" data-i18n="projects.project2Link">Em breve →</a>
+                <span class="project-link is-disabled" aria-disabled="true" data-i18n="projects.project2Link">Em breve →</span>
             </div>
         </div>
     </section>

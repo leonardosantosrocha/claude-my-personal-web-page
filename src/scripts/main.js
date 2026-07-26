@@ -56,6 +56,7 @@ function updateThemeToggleButton() {
     const button = document.getElementById('themeToggle');
     const isDarkMode = document.documentElement.classList.contains('dark-mode');
     button.textContent = isDarkMode ? '☀️' : '🌙';
+    button.setAttribute('aria-pressed', String(isDarkMode));
 }
 
 // Language management
@@ -231,6 +232,7 @@ function updateLanguage() {
     // Update language button with flag
     const langButton = document.getElementById('langToggle');
     langButton.textContent = currentLang === 'pt' ? '🇺🇸' : '🇧🇷';
+    langButton.setAttribute('aria-label', currentLang === 'pt' ? 'Switch to English' : 'Mudar para Português');
 
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
