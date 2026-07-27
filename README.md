@@ -29,24 +29,20 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 | Frontend | HTML5, CSS3, JavaScript (Vanilla) |
 | Infrastructure | AWS S3 (Static Hosting) + CloudFront (CDN) |
 | Optimization | Mobile-responsive, Dark mode, i18n |
-| SEO | robots.txt, sitemap.xml, semantic HTML, Open Graph/Twitter meta tags, canonical URL |
+| SEO | Semantic HTML, Open Graph/Twitter meta tags, canonical URL |
 
 
 ## 📁 Project Structure
 
 ```
 claude-my-personal-web-page/
-├── src/
-│   ├── index.html              # Main page with all sections
-│   ├── scripts/
-│   │   └── main.js             # i18n, dark mode, interactivity
-│   ├── styles/
-│   │   └── main.css            # Responsive design, dark mode
-│   └── assets/
-│       └── images/             # Logo, favicon, and profile photo (WebP + PNG fallback)
-├── robots.txt                   # SEO crawler configuration
-├── sitemap.xml                  # XML sitemap for search engines
-└── README.md                    # This file
+├── index.html              # Main page with all sections
+├── scripts/
+│   └── main.js             # i18n, dark mode, interactivity
+├── styles/
+│   └── main.css            # Responsive design, dark mode
+├── assets/                 # Logo, favicon, apple-touch-icon, and profile photo (WebP + PNG fallback)
+└── README.md                # This file
 ```
 
 
@@ -62,11 +58,10 @@ git clone https://github.com/leonardosantosrocha/claude-my-personal-web-page.git
 cd claude-my-personal-web-page
 
 # Start local server (Python)
-cd src
 python -m http.server 8000
 
 # Or with Node.js (http-server)
-npx http-server src
+npx http-server .
 
 # Open browser
 # http://localhost:8000
@@ -135,7 +130,7 @@ Features:
 
 ### Responsive Design
 - Mobile-first approach
-- Breakpoints: 640px, 768px, 1024px, 1440px+
+- Breakpoints: mobile (base), tablet (768px+), desktop (1024px+)
 - Touch-friendly (44px minimum tap targets)
 - Optimized for all modern devices
 

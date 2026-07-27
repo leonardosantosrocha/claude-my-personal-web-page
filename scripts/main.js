@@ -1,30 +1,42 @@
 // Mobile Menu Management
+const MOBILE_NAV_BREAKPOINT = 640;
+
 function initializeMenuToggle() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = navMenu.querySelectorAll('a');
 
+    function setMenuOpen(isOpen) {
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        navMenu.classList.toggle('active', isOpen);
+        // Below the desktop breakpoint the closed menu is visually hidden via
+        // max-height:0, but its links stay in the tab order unless marked inert -
+        // that traps keyboard/screen-reader focus on invisible elements.
+        if (isOpen || window.innerWidth >= MOBILE_NAV_BREAKPOINT) {
+            navMenu.removeAttribute('inert');
+        } else {
+            navMenu.setAttribute('inert', '');
+        }
+    }
+
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            navMenu.classList.toggle('active');
+            setMenuOpen(!isExpanded);
         });
     }
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
+            setMenuOpen(false);
         });
     });
 
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 640) {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
-        }
+        setMenuOpen(window.innerWidth >= MOBILE_NAV_BREAKPOINT);
     });
+
+    setMenuOpen(window.innerWidth >= MOBILE_NAV_BREAKPOINT);
 }
 
 // Dark mode management
@@ -57,6 +69,13 @@ function updateThemeToggleButton() {
     const isDarkMode = document.documentElement.classList.contains('dark-mode');
     button.textContent = isDarkMode ? '☀️' : '🌙';
     button.setAttribute('aria-pressed', String(isDarkMode));
+
+    // Keep the mobile browser chrome color in sync with the active theme
+    // (dark mode is a manual toggle, not tied to prefers-color-scheme).
+    const themeColorMeta = document.getElementById('themeColorMeta');
+    if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', isDarkMode ? 'oklch(18% 0.005 90)' : 'oklch(98% 0.003 90)');
+    }
 }
 
 // Language management
@@ -229,9 +248,9 @@ function updateLanguage() {
     // Update html lang attribute
     htmlElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
 
-    // Update language button with flag
+    // Update language button (shows the language it will switch to)
     const langButton = document.getElementById('langToggle');
-    langButton.textContent = currentLang === 'pt' ? '🇺🇸' : '🇧🇷';
+    langButton.textContent = currentLang === 'pt' ? 'EN' : 'PT';
     langButton.setAttribute('aria-label', currentLang === 'pt' ? 'Switch to English' : 'Mudar para Português');
 
     // Update all elements with data-i18n attribute
