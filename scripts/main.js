@@ -1,275 +1,225 @@
-// Mobile Menu Management
-const MOBILE_NAV_BREAKPOINT = 640;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Leonardo Rocha — portfólio pessoal
+   JavaScript sem dependências: idioma, menu mobile, contato e revelação.
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
 
-function initializeMenuToggle() {
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = navMenu.querySelectorAll('a');
+    var root = document.documentElement;
+    var EMAIL = 'leonardo.rocha.2018@outlook.com';
+    var LANG_KEY = 'lr-lang';
 
-    function setMenuOpen(isOpen) {
-        menuToggle.setAttribute('aria-expanded', String(isOpen));
-        navMenu.classList.toggle('active', isOpen);
-        // Below the desktop breakpoint the closed menu is visually hidden via
-        // max-height:0, but its links stay in the tab order unless marked inert -
-        // that traps keyboard/screen-reader focus on invisible elements.
-        if (isOpen || window.innerWidth >= MOBILE_NAV_BREAKPOINT) {
-            navMenu.removeAttribute('inert');
-        } else {
-            navMenu.setAttribute('inert', '');
+    var STRINGS = {
+        pt: {
+            langToggle: 'Mudar para inglês',
+            menuOpen: 'Abrir menu',
+            menuClose: 'Fechar menu',
+            subject: 'Contato — Leonardo Rocha'
+        },
+        en: {
+            langToggle: 'Mudar para português',
+            menuOpen: 'Open menu',
+            menuClose: 'Close menu',
+            subject: 'Hello — Leonardo Rocha'
         }
+    };
+
+    var header = document.getElementById('site-header');
+    var navToggle = document.getElementById('nav-toggle');
+    var langToggle = document.getElementById('lang-toggle');
+    var contactToggle = document.getElementById('contact-toggle');
+    var contactDropdown = document.getElementById('contact-dropdown');
+    var nav = document.getElementById('site-nav');
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var isDesktopNav = window.matchMedia('(min-width: 768px)');
+
+    function store(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { /* modo privado */ }
+    }
+    function read(key) {
+        try { return localStorage.getItem(key); } catch (e) { return null; }
     }
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            setMenuOpen(!isExpanded);
+    /* ─────────────────────────────── idioma ─────────────────────────────── */
+    var lang = read(LANG_KEY) === 'en' ? 'en' : 'pt';
+
+    function applyLang(next, persist) {
+        lang = next === 'en' ? 'en' : 'pt';
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
+
+        if (langToggle) langToggle.setAttribute('aria-label', STRINGS[lang].langToggle);
+        if (nav) nav.setAttribute('aria-label', lang === 'pt' ? 'Principal' : 'Main');
+        applyNavLabel();
+
+        var href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(STRINGS[lang].subject);
+        var links = document.querySelectorAll('[data-mailto]');
+        for (var i = 0; i < links.length; i++) links[i].setAttribute('href', href);
+
+        if (persist) store(LANG_KEY, lang);
+    }
+
+    if (langToggle) {
+        langToggle.addEventListener('click', function () {
+            applyLang(lang === 'pt' ? 'en' : 'pt', true);
         });
     }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            setMenuOpen(false);
+    /* ─────────────────────────────── menu mobile ─────────────────────────────── */
+    function navIsOpen() {
+        return header && header.getAttribute('data-nav-open') === 'true';
+    }
+    function applyNavLabel() {
+        if (!navToggle) return;
+        navToggle.setAttribute('aria-label', navIsOpen() ? STRINGS[lang].menuClose : STRINGS[lang].menuOpen);
+    }
+    function setNav(open) {
+        if (!header || !navToggle) return;
+        header.setAttribute('data-nav-open', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        applyNavLabel();
+    }
+
+    if (navToggle) {
+        setNav(false);
+        navToggle.addEventListener('click', function () {
+            setNav(!navIsOpen());
         });
+    }
+
+    if (nav) {
+        nav.addEventListener('click', function (event) {
+            if (event.target.closest('a')) {
+                setNav(false);
+                setContact(false);
+            }
+        });
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Escape') return;
+        if (contactIsOpen()) {
+            setContact(false);
+            if (contactToggle) contactToggle.focus();
+        }
+        if (navIsOpen()) {
+            setNav(false);
+            if (navToggle) navToggle.focus();
+        }
     });
 
-    window.addEventListener('resize', () => {
-        setMenuOpen(window.innerWidth >= MOBILE_NAV_BREAKPOINT);
+    document.addEventListener('click', function (event) {
+        if (navIsOpen() && header && !header.contains(event.target)) setNav(false);
+        if (contactIsOpen() && !event.target.closest('.site-nav__item--contact')) setContact(false);
     });
 
-    setMenuOpen(window.innerWidth >= MOBILE_NAV_BREAKPOINT);
-}
-
-// Dark mode management
-function initializeDarkMode() {
-    // Always start with light mode (dark mode disabled)
-    const darkModeValue = localStorage.getItem('darkMode');
-
-    // Only enable dark mode if explicitly set to 'true' in localStorage
-    if (darkModeValue === 'true') {
-        document.documentElement.classList.add('dark-mode');
-    } else {
-        // Default to light mode - always remove dark-mode class
-        document.documentElement.classList.remove('dark-mode');
-        // Initialize localStorage to 'false' for consistency
-        if (!darkModeValue) {
-            localStorage.setItem('darkMode', 'false');
-        }
+    // ao alargar para tablet o painel deixa de existir: o estado precisa acompanhar
+    function onNavBreakpoint(event) {
+        if (event.matches) setNav(false);
+        setContact(false);
     }
-    updateThemeToggleButton();
-}
+    if (isDesktopNav.addEventListener) isDesktopNav.addEventListener('change', onNavBreakpoint);
+    else if (isDesktopNav.addListener) isDesktopNav.addListener(onNavBreakpoint);
 
-function toggleDarkMode() {
-    const isDarkMode = document.documentElement.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
-    updateThemeToggleButton();
-}
-
-function updateThemeToggleButton() {
-    const button = document.getElementById('themeToggle');
-    const isDarkMode = document.documentElement.classList.contains('dark-mode');
-    button.textContent = isDarkMode ? '☀️' : '🌙';
-    button.setAttribute('aria-pressed', String(isDarkMode));
-
-    // Keep the mobile browser chrome color in sync with the active theme
-    // (dark mode is a manual toggle, not tied to prefers-color-scheme).
-    const themeColorMeta = document.getElementById('themeColorMeta');
-    if (themeColorMeta) {
-        themeColorMeta.setAttribute('content', isDarkMode ? 'oklch(18% 0.005 90)' : 'oklch(98% 0.003 90)');
+    /* ─────────────────────────────── contato (dropdown) ─────────────────────────────── */
+    function contactIsOpen() {
+        return !!(contactDropdown && !contactDropdown.hidden);
     }
-}
-
-// Language management
-let currentLang = localStorage.getItem('language') || 'pt';
-
-const translations = {
-    pt: {
-        nav: {
-            perfil: 'Perfil',
-            projetos: 'Projetos',
-            curriculum: 'Currículo',
-            contato: 'Contato'
-        },
-        sections: {
-            sectionPerfil: '00 / Perfil',
-            sectionProjetos: '01 / Projetos',
-            sectionCurriculum: '02 / Currículo'
-        },
-        hero: {
-            bio: 'Cientista da Computação atuando há 5 anos como Engenheiro de Dados e Analytics no Itaú Unibanco. Apoio squads na adoção da cultura data-driven e na automação de processos utilizando IA.'
-        },
-        projects: {
-            project1Title: 'Página Pessoal',
-            project1Desc: 'Portfólio técnico minimalista construído com HTML, CSS, JavaScript e Claude Code. Design responsivo, suporte bilíngue e dark mode automático.',
-            project1Link: 'Ver repositório →',
-            project2Title: 'Em desenvolvimento',
-            project2Desc: 'Novo projeto em desenvolvimento. Em breve mais informações.',
-            project2Link: 'Em breve →'
-        },
-        curriculum: {
-            experienceTitle: 'Experiência Profissional',
-            educationTitle: 'Formação Acadêmica',
-            certificationsTitle: 'Certificações',
-            job1Position: 'Engenheiro de Dados Sênior',
-            job1Company: 'Itaú Unibanco',
-            job1Period: 'Mar 2026 - Presente',
-            job1Desc: 'Desenvolve agentes de IA e pipelines big data na AWS ao projetar e implementar soluções de automação com Python, PySpark e Terraform, resultando em tarefas de squad simplificadas e suporte abrangente para o negócio de Seguros.',
-            job2Position: 'Engenheiro de Analytics Sênior',
-            job2Company: 'Itaú Unibanco',
-            job2Period: '2025 - 2026',
-            job2Desc: 'Alcançou uma redução de 35% nos custos da AWS Athena ao construir um pipeline abrangente de monitoramento e rastreamento de queries, e impulsionou crescimento da equipe ao orientar tecnicamente dois estagiários que foram subsequentemente contratados como analistas de dados.',
-            job3Position: 'Engenheiro de Analytics Pleno',
-            job3Company: 'Itaú Unibanco',
-            job3Period: '2024 - 2025',
-            job3Desc: 'Criou um dashboard GA4 de alto desempenho processando 100 milhões de linhas diárias do app Itaú ao aproveitar AWS e PySpark, e impulsionou iniciativas de alfabetização de dados através de treinamentos alcançando NPS >80.',
-            job4Position: 'Engenheiro de Analytics Júnior',
-            job4Company: 'Itaú Unibanco',
-            job4Period: '2022 - 2024',
-            job4Desc: 'Construiu uma página HTML/CSS/JS para padronização de projetos técnicos que reduziu o esforço de documentação em 50%, e facilitou a adoção de data mesh ao impulsionar a implementação que melhorou a qualidade dos dados em toda a organização.',
-            job5Position: 'Estagiário em Análise de Dados',
-            job5Company: 'Itaú Unibanco',
-            job5Period: '2021 - 2022',
-            job5Desc: 'Implementou automações de qualidade de dados com Shell e SQL que melhoraram a saúde dos pipelines em 15%, e desenvolveu um pipeline de processamento que tratava 100K+ apólices de seguros diárias usando SAS e Tableau para analytics de negócio.',
-            edu1Position: 'Especialização em Data Engineering e Big Data',
-            edu1Company: 'Escola Politécnica da USP',
-            edu1Period: 'Fev 2026 - Fev 2028',
-            edu2Position: 'Especialização em Data Science & Inteligência Artificial',
-            edu2Company: 'FIAP',
-            edu2Period: 'Abr 2024 - Abr 2025',
-            edu3Position: 'Bacharelado em Ciência da Computação',
-            edu3Company: 'Universidade Presbiteriana Mackenzie',
-            edu3Period: 'Jan 2020 - Dez 2023',
-            edu4Position: 'Técnico em Programação',
-            edu4Company: 'Instituto Tecnológico de Barueri',
-            edu4Period: 'Jan 2017 - Dez 2019',
-            cert1Position: 'AWS Certified AI Practitioner',
-            cert1Company: 'Amazon Web Services (AWS)',
-            cert1Period: 'Emitido Ago 2025 · Expira Ago 2028',
-            cert2Position: 'AWS Certified Solutions Architect - Associate',
-            cert2Company: 'Amazon Web Services (AWS)',
-            cert2Period: 'Emitido Nov 2023 · Expira Nov 2026',
-            cert3Position: 'AWS Certified Cloud Practitioner',
-            cert3Company: 'Amazon Web Services (AWS)',
-            cert3Period: 'Emitido Jul 2022 · Expirado Jul 2025'
-        },
-        footer: {
-            copy: '© 2026 Leonardo Rocha. Todos os direitos reservados.',
-            topLink: 'Voltar ao topo ↑'
-        }
-    },
-    en: {
-        nav: {
-            perfil: 'Profile',
-            projetos: 'Projects',
-            curriculum: 'Resume',
-            contato: 'Contact'
-        },
-        sections: {
-            sectionPerfil: '00 / Profile',
-            sectionProjetos: '01 / Projects',
-            sectionCurriculum: '02 / Curriculum'
-        },
-        hero: {
-            bio: 'Computer Scientist working for 5 years as a Data Engineer and Analytics at Itaú Unibanco. I support multidisciplinary teams in adopting a data-driven culture and automating processes using AI.'
-        },
-        projects: {
-            project1Title: 'Personal Portfolio',
-            project1Desc: 'Minimalist technical portfolio built with HTML, CSS, JavaScript and Claude Code. Responsive design, bilingual support and automatic dark mode.',
-            project1Link: 'View repository →',
-            project2Title: 'In development',
-            project2Desc: 'New project in development. More information coming soon.',
-            project2Link: 'Coming soon →'
-        },
-        curriculum: {
-            experienceTitle: 'Professional Experience',
-            educationTitle: 'Academic Training',
-            certificationsTitle: 'Certifications',
-            job1Position: 'Senior Data Engineer',
-            job1Company: 'Itaú Unibanco',
-            job1Period: 'Mar 2026 - Present',
-            job1Desc: 'Develops AI agents and big data pipelines on AWS by designing and implementing automation solutions with Python, PySpark, and Terraform, resulting in streamlined routine squad tasks and comprehensive support for the Insurance business.',
-            job2Position: 'Senior Analytics Engineer',
-            job2Company: 'Itaú Unibanco',
-            job2Period: '2025 - 2026',
-            job2Desc: 'Achieved a 35% reduction in AWS Athena costs by building a comprehensive query monitoring and tracking pipeline, and drove team growth by mentoring two interns who were subsequently hired as data analysts.',
-            job3Position: 'Mid Level Analytics Engineer',
-            job3Company: 'Itaú Unibanco',
-            job3Period: '2024 - 2025',
-            job3Desc: 'Built a high-performance GA4 dashboard processing 100 million rows daily from the Itaú app by leveraging AWS and PySpark, and drove data literacy initiatives through training programs, achieving NPS >80.',
-            job4Position: 'Junior Analytics Engineer',
-            job4Company: 'Itaú Unibanco',
-            job4Period: '2022 - 2024',
-            job4Desc: 'Created a standardized documentation system using HTML, CSS, and JS that reduced documentation effort by 50%, and facilitated data mesh adoption by driving implementation that improved data quality across the organization.',
-            job5Position: 'Data Analyst Intern',
-            job5Company: 'Itaú Unibanco',
-            job5Period: '2021 - 2022',
-            job5Desc: 'Implemented data quality automations with Shell and SQL that enhanced pipeline health by 15%, and developed a processing pipeline handling 100K+ insurance policies daily using SAS and Tableau for business analytics.',
-            edu1Position: 'Specialization in Data Engineering and Big Data',
-            edu1Company: 'Polytechnic School of USP',
-            edu1Period: 'Feb 2026 - Feb 2028',
-            edu2Position: 'Specialization in Data Science & Artificial Intelligence',
-            edu2Company: 'FIAP',
-            edu2Period: 'Apr 2024 - Apr 2025',
-            edu3Position: 'Bachelor\'s Degree in Computer Science',
-            edu3Company: 'Presbyterian Mackenzie University',
-            edu3Period: 'Jan 2020 - Dec 2023',
-            edu4Position: 'Technician in Programming',
-            edu4Company: 'Barueri Technological Institute',
-            edu4Period: 'Jan 2017 - Dec 2019',
-            cert1Position: 'AWS Certified AI Practitioner',
-            cert1Company: 'Amazon Web Services (AWS)',
-            cert1Period: 'Issued Aug 2025 · Expires Aug 2028',
-            cert2Position: 'AWS Certified Solutions Architect - Associate',
-            cert2Company: 'Amazon Web Services (AWS)',
-            cert2Period: 'Issued Nov 2023 · Expires Nov 2026',
-            cert3Position: 'AWS Certified Cloud Practitioner',
-            cert3Company: 'Amazon Web Services (AWS)',
-            cert3Period: 'Issued Jul 2022 · Expired Jul 2025'
-        },
-        footer: {
-            copy: '© 2026 Leonardo Rocha. All rights reserved.',
-            topLink: 'Back to top ↑'
-        }
+    function setContact(open) {
+        if (!contactToggle || !contactDropdown) return;
+        contactDropdown.hidden = !open;
+        contactToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
-};
 
-function getNestedValue(obj, path) {
-    return path.split('.').reduce((current, prop) => current?.[prop], obj);
-}
+    if (contactToggle && contactDropdown) {
+        contactToggle.addEventListener('click', function (event) {
+            event.stopPropagation();
+            var willOpen = !contactIsOpen();
+            setContact(willOpen);
+            if (willOpen) {
+                var first = contactDropdown.querySelector('a');
+                if (first) first.focus({ preventScroll: true });
+            }
+        });
+    }
 
-function toggleLanguage() {
-    currentLang = currentLang === 'pt' ? 'en' : 'pt';
-    localStorage.setItem('language', currentLang);
-    updateLanguage();
-}
+    /* ─────────────────────────────── header ao rolar ─────────────────────────────── */
+    if (header) {
+        var onScroll = function () {
+            header.setAttribute('data-scrolled', window.scrollY > 4 ? 'true' : 'false');
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+    }
 
-function updateLanguage() {
-    const htmlElement = document.documentElement;
-
-    // Update html lang attribute
-    htmlElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
-
-    // Update language button (shows the language it will switch to)
-    const langButton = document.getElementById('langToggle');
-    langButton.textContent = currentLang === 'pt' ? 'EN' : 'PT';
-    langButton.setAttribute('aria-label', currentLang === 'pt' ? 'Switch to English' : 'Mudar para Português');
-
-    // Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const translatedText = getNestedValue(translations[currentLang], key);
-        if (translatedText) {
-            element.textContent = translatedText;
+    /* ─────────────────────────────── seção ativa na navegação ─────────────────────────────── */
+    var navLinks = nav ? nav.querySelectorAll('a[href^="#"]') : [];
+    if (navLinks.length && 'IntersectionObserver' in window) {
+        var linkById = {};
+        var watched = [];
+        for (var n = 0; n < navLinks.length; n++) {
+            var id = navLinks[n].getAttribute('href').slice(1);
+            var target = document.getElementById(id);
+            if (!target) continue;
+            linkById[id] = navLinks[n];
+            watched.push(target);
         }
-    });
-}
 
-// Initialize
-function init() {
-    initializeMenuToggle();
-    document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
-    document.getElementById('langToggle').addEventListener('click', toggleLanguage);
-    initializeDarkMode();
-    updateLanguage();
-}
+        var visible = {};
+        var spy = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                visible[entry.target.id] = entry.isIntersecting;
+            });
+            var current = null;
+            watched.forEach(function (section) {
+                if (visible[section.id]) current = current || section.id;
+            });
+            Object.keys(linkById).forEach(function (key) {
+                if (key === current) linkById[key].setAttribute('aria-current', 'true');
+                else linkById[key].removeAttribute('aria-current');
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
 
-document.addEventListener('DOMContentLoaded', init);
+        watched.forEach(function (section) { spy.observe(section); });
+    }
+
+    /* ─────────────────────────────── revelação ao rolar ─────────────────────────────── */
+    // Nada é escondido pelo CSS: sem JS, ou com movimento reduzido, o conteúdo
+    // simplesmente aparece. Só o que está abaixo da dobra recebe a transição.
+    function setupReveal() {
+        if (reduceMotion.matches || !('IntersectionObserver' in window)) return;
+
+        var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+        if (!els.length) return;
+
+        var show = function (el) {
+            el.setAttribute('data-revealed', '');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        };
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                show(entry.target);
+                io.unobserve(entry.target);
+            });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.02 });
+
+        els.forEach(function (el) {
+            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); return; }
+            el.style.transition = 'opacity .55s ease, transform .55s ease';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(14px)';
+            io.observe(el);
+        });
+
+        // rede de segurança: nada fica invisível se o observer nunca disparar
+        setTimeout(function () { els.forEach(show); }, 5000);
+    }
+
+    /* ─────────────────────────────── início ─────────────────────────────── */
+    applyLang(lang, false);
+    setupReveal();
+})();

@@ -7,19 +7,21 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 
 - **Bilingual** (Portuguese & English) with manual toggle, defaults to Portuguese
 - **Mobile-first design** fully responsive across all devices
-- **Dark mode** with manual toggle, defaults to light mode
-- **SEO-optimized** with structured metadata and semantic HTML
-- **Zero dependencies** - pure vanilla HTML/CSS/JavaScript
+- **Dark theme** built on the "Nocturne" design tokens the page was designed against
+- **SEO-optimized** with structured metadata, semantic HTML and JSON-LD
+- **Zero build step** - pure vanilla HTML/CSS/JavaScript, no framework, no bundler
 - **Lightning-fast** - hosted on AWS CloudFront CDN
 
 
 ## 📊 What's Inside
 
-**Profile** - 5+ years as Data Engineer & Analytics specialist at Itaú Unibanco
+**Hero** - Headline stats: Athena cost cut, rows processed per day, documentation effort, training NPS
 
-**Projects** - Showcase of professional work and technical contributions
+**Personal projects** - Work built outside the job, from code to infrastructure
 
-**Curriculum** - Detailed professional experience, academic training, and AWS certifications
+**Experience** - Every role at Itaú Unibanco since 2021, with the outcome each one moved
+
+**Education & certifications** - Academic training and AWS certifications
 
 
 ## 🛠️ Tech Stack
@@ -27,9 +29,11 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 | Layer | Technology |
 |-------|-----------|
 | Frontend | HTML5, CSS3, JavaScript (Vanilla) |
-| Infrastructure | AWS S3 (Static Hosting) + CloudFront (CDN) |
-| Optimization | Mobile-responsive, Dark mode, i18n |
-| SEO | Semantic HTML, Open Graph/Twitter meta tags, canonical URL |
+| Infrastructure | AWS S3 (Static Hosting) + CloudFront (CDN) + Route 53 (DNS) |
+| Optimization | Mobile-first responsive, fluid (`clamp()`) hero typography, i18n, scroll reveal |
+| Typography | Inter, served by Google Fonts (system-ui fallback) |
+| SEO | Semantic HTML, Open Graph/Twitter meta tags, canonical URL, JSON-LD Person |
+| Development | Built with [Claude Code](https://claude.com/claude-code) |
 
 
 ## 📁 Project Structure
@@ -38,11 +42,11 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 claude-my-personal-web-page/
 ├── index.html              # Main page with all sections
 ├── scripts/
-│   └── main.js             # i18n, dark mode, interactivity
+│   └── main.js             # i18n, mobile menu, contact dropdown, scroll reveal
 ├── styles/
-│   └── main.css            # Responsive design, dark mode
-├── assets/                 # Logo, favicon, apple-touch-icon, and profile photo (WebP + PNG fallback)
-└── README.md                # This file
+│   └── main.css            # Design tokens and mobile-first responsive layout
+├── assets/                 # Logo, favicon, apple-touch-icon
+└── README.md               # This file
 ```
 
 
@@ -113,7 +117,6 @@ Features:
 - Sub-second load times (global edge locations)
 - Automatic cache invalidation on updates
 - Gzip compression enabled
-- Image optimization (WebP with PNG fallback for the hero photo)
 
 
 ## 🌍 Features Explained
@@ -121,17 +124,23 @@ Features:
 ### Internationalization (i18n)
 - Defaults to Portuguese (BR)
 - Toggle between Portuguese (BR) and English
-- Preference saved in localStorage
+- Both languages ship in the markup; CSS shows one and hides the other
+- Preference saved in localStorage; `<html lang>` and the mailto subject follow the choice
 
-### Dark Mode
-- Defaults to light mode
-- Manual toggle with persistent storage
-- Smooth transitions between themes
+### Theme
+- Single dark theme, built on the design system's tokens (`--color-bg: #161826`, blurple accent)
+- No light mode: the palette the page was designed against is dark only
 
 ### Responsive Design
 - Mobile-first approach
 - Breakpoints: mobile (base), tablet (768px+), desktop (1024px+)
 - Touch-friendly (44px minimum tap targets)
-- Optimized for all modern devices
+- Navigation collapses into a menu below 768px; the closed panel is fully hidden, so it stays out of tab order
+- Hero headline, tags and stats scale fluidly (`clamp()`) with the viewport instead of jumping at breakpoints
+- Header's "Contato" button opens an anchored dropdown (email, LinkedIn, GitHub) instead of navigating to a separate section
+
+### Motion
+- Sections fade in on scroll via IntersectionObserver
+- Nothing is hidden by CSS: without JavaScript, or under `prefers-reduced-motion`, all content renders immediately
 
 ---
