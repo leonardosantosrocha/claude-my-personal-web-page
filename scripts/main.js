@@ -184,42 +184,35 @@
         watched.forEach(function (section) { spy.observe(section); });
     }
 
-    /* ─────────────────────────────── revelação ao rolar ─────────────────────────────── */
-    // Nada é escondido pelo CSS: sem JS, ou com movimento reduzido, o conteúdo
-    // simplesmente aparece. Só o que está abaixo da dobra recebe a transição.
-    function setupReveal() {
-        if (reduceMotion.matches || !('IntersectionObserver' in window)) return;
+    /* ─────────────────────────────── entrada ─────────────────────────────── */
+    // Um único momento, na carga: o nome e a linha de abertura sobem, e o eixo
+    // cronológico se desenha de cima para baixo. Nada de revelação por seção
+    // durante o scroll. O CSS não esconde nada — sem JS, ou com movimento
+    // reduzido, a página já nasce inteira.
+    function orchestrate() {
+        if (reduceMotion.matches) return;
 
-        var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-        if (!els.length) return;
+        var axis = document.getElementById('chrono');
+        var entering = Array.prototype.slice.call(document.querySelectorAll('[data-enter]'));
 
-        var show = function (el) {
-            el.setAttribute('data-revealed', '');
-            el.style.opacity = '1';
-            el.style.transform = 'none';
+        entering.forEach(function (el, i) {
+            el.style.transitionDelay = (i * 90) + 'ms';
+            el.setAttribute('data-enter', 'in');
+        });
+        if (axis) axis.setAttribute('data-axis', 'draw');
+
+        var play = function () {
+            entering.forEach(function (el) { el.setAttribute('data-enter', 'on'); });
+            if (axis) axis.setAttribute('data-axis', 'drawn');
         };
 
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                show(entry.target);
-                io.unobserve(entry.target);
-            });
-        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.02 });
-
-        els.forEach(function (el) {
-            if (el.getBoundingClientRect().top < window.innerHeight) { show(el); return; }
-            el.style.transition = 'opacity .55s ease, transform .55s ease';
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(14px)';
-            io.observe(el);
-        });
-
-        // rede de segurança: nada fica invisível se o observer nunca disparar
-        setTimeout(function () { els.forEach(show); }, 5000);
+        // dois quadros para o estado inicial chegar a pintar antes da transição
+        requestAnimationFrame(function () { requestAnimationFrame(play); });
+        // rede de segurança: numa aba em segundo plano o rAF não dispara
+        setTimeout(play, 600);
     }
 
     /* ─────────────────────────────── início ─────────────────────────────── */
     applyLang(lang, false);
-    setupReveal();
+    orchestrate();
 })();
