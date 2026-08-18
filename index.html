@@ -22,12 +22,12 @@
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    <meta name="theme-color" content="#161826">
-    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#FAFAF8">
+    <meta name="color-scheme" content="light">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body id="topo">
@@ -37,8 +37,6 @@
 <!-- ══════════════════════════════════════ HEADER ══════════════════════════════════════ -->
 <header class="site-header" id="site-header">
     <div class="site-header__inner">
-        <a class="brand" href="#topo" aria-label="Leonardo Rocha"></a>
-
         <nav class="site-nav" id="site-nav" aria-label="Principal">
             <ul class="site-nav__list">
                 <li><a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en" lang="en">Projects</span></a></li>
@@ -60,7 +58,7 @@
         </nav>
 
         <div class="site-header__actions">
-            <button type="button" class="btn btn-secondary btn-lang" id="lang-toggle" aria-label="Mudar para inglês">
+            <button type="button" class="btn-lang" id="lang-toggle" aria-label="Mudar para inglês">
                 <span data-l="pt">EN</span><span data-l="en" lang="en">PT</span>
             </button>
             <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
@@ -75,326 +73,432 @@
 <main id="conteudo">
 
     <!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
-    <section class="hero section" aria-labelledby="hero-title">
-        <div class="hero__intro" data-reveal>
-            <h1 id="hero-title" class="hero__name">Leonardo Rocha</h1>
-            <p class="hero__lead">
-                <span data-l="pt">Engenheiro de Dados com mais de 5 anos de experiência na construção de pipelines no Itaú Unibanco. Atualmente construindo agentes de IA.</span>
-                <span data-l="en" lang="en">Data engineer with more than 5 years building pipelines at Itaú Unibanco. Currently building AI agents.</span>
-            </p>
-        </div>
-
-        <ul class="hero__tags tag-list" data-reveal>
-            <li class="tag tag-accent">AI</li>
-            <li class="tag tag-accent">AWS</li>
-            <li class="tag tag-accent">Python</li>
-            <li class="tag tag-accent">Spark</li>
-            <li class="tag tag-accent">SQL</li>
-            <li class="tag tag-accent">Terraform</li>
-        </ul>
-
-        <dl class="hero__stats" data-reveal>
-            <div class="stat">
-                <dt class="stat__value">+35%</dt>
-                <dd class="stat__label">
-                    <span data-l="pt">de redução nos custos do AWS Athena</span>
-                    <span data-l="en" lang="en">reduction in AWS Athena cost</span>
-                </dd>
-            </div>
-            <div class="stat">
-                <dt class="stat__value"><span data-l="pt">+100 milhões</span><span data-l="en" lang="en">+100 millions</span></dt>
-                <dd class="stat__label">
-                    <span data-l="pt">de linhas processadas por dia</span>
-                    <span data-l="en" lang="en">rows processed per day</span>
-                </dd>
-            </div>
-            <div class="stat">
-                <dt class="stat__value">+50%</dt>
-                <dd class="stat__label">
-                    <span data-l="pt">de redução do tempo para documentar</span>
-                    <span data-l="en" lang="en">reduction in time to document</span>
-                </dd>
-            </div>
-            <div class="stat">
-                <dt class="stat__value"><span data-l="pt">82,5</span><span data-l="en" lang="en">82.5</span></dt>
-                <dd class="stat__label">
-                    <span data-l="pt">NPS médio dos treinamentos</span>
-                    <span data-l="en" lang="en">average NPS of the training I delivered</span>
-                </dd
-            </div>
-        </dl>
+    <section class="hero wrap" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="hero__name" data-enter>Leonardo Rocha</h1>
+        <p class="hero__lead" data-enter>
+            <span data-l="pt">Engenheiro de dados. Cinco anos construindo pipelines no Itaú Unibanco. Hoje construo agentes de IA.</span>
+            <span data-l="en" lang="en">Data engineer. Five years building pipelines at Itaú Unibanco. Today I build AI agents.</span>
+        </p>
+        <p class="hero__proof" data-enter>
+            <span data-l="pt"><span class="proof-item"><span class="num">−35%</span> custo Athena</span>&nbsp;· <span class="proof-item"><span class="num">+100 mi</span> eventos/dia</span>&nbsp;· <span class="proof-item">NPS <span class="num">82,5</span></span></span>
+            <span data-l="en" lang="en"><span class="proof-item"><span class="num">−35%</span> Athena cost</span>&nbsp;· <span class="proof-item"><span class="num">+100M</span> events/day</span>&nbsp;· <span class="proof-item"><span class="num">82.5</span> NPS</span></span>
+        </p>
     </section>
 
-    <!-- ══════════════════════════════════ PROJETOS ══════════════════════════════════ -->
-    <section class="section" id="projetos" aria-labelledby="projetos-title">
-        <div class="section__head">
-            <h2 class="kicker" id="projetos-title">
-                <span class="kicker__rule" aria-hidden="true"></span>
-                <span data-l="pt">Projetos pessoais</span><span data-l="en" lang="en">Personal projects</span>
-            </h2>
-            <p class="section__note">
-                <span data-l="pt">Construído fora do trabalho, do código à infraestrutura</span>
-                <span data-l="en" lang="en">Built outside work, from code to infrastructure</span>
-            </p>
-        </div>
+    <!-- ═══════════════════════════ EIXO CRONOLÓGICO ═══════════════════════════ -->
+    <div class="chrono wrap" id="chrono">
 
-        <div class="grid-2" data-reveal>
-            <article class="card">
-                <p class="card-kicker">01 · <span data-l="pt">Web estática na AWS</span><span data-l="en" lang="en">Static web on AWS</span></p>
-                <h3 class="card-title">
-                    <span data-l="pt">Página web estática</span>
-                    <span data-l="en" lang="en">Static web page</span>
-                </h3>
-                <p class="card-body">
-                    <span data-l="pt">Uma página construída com HTML, CSS e JavaScript, com o Claude Code como ferramenta de desenvolvimento. Publicada via bucket S3, distribuída por um CloudFront com DNS realizado pelo Route 53.</span>
-                    <span data-l="en" lang="en">A page built with HTML, CSS and JavaScript, using Claude Code as the development tool. Published via an S3 bucket, distributed through CloudFront, with DNS handled by Route 53.</span>
-                </p>
-                <p class="card-result">
-                    <span data-l="pt">→ S3 + CloudFront + Route 53 em produção</span>
-                    <span data-l="en" lang="en">→ S3 + CloudFront + Route 53 in production</span>
-                </p>
-                <ul class="tag-list">
-                    <li class="tag tag-neutral">CloudFront</li>
-                    <li class="tag tag-neutral">CSS</li>
-                    <li class="tag tag-neutral">HTML</li>
-                    <li class="tag tag-neutral">JavaScript</li>
-                    <li class="tag tag-neutral">Route 53</li>
-                    <li class="tag tag-neutral">S3</li>
-                </ul>
-            </article>
-
-            <article class="card card--outline">
-                <p class="card-kicker">02 · <span data-l="pt">Em construção</span><span data-l="en" lang="en">In the works</span></p>
-                <h3 class="card-title">
-                    <span data-l="pt">Próximos projetos</span><span data-l="en" lang="en">Next projects</span>
-                </h3>
-                <p class="card-body">
-                    <span data-l="pt">Este espaço é reservado para o que vem a seguir: experimentos com agentes de IA, pipelines abertos e ferramentas pequenas que resolvem um problema real. Cada projeto entra aqui com o número que ele moveu.</span>
-                    <span data-l="en" lang="en">This space is reserved for what comes next: AI-agent experiments, open pipelines and small tools that solve a real problem. Each project lands here with the number it moved.</span>
-                </p>
-                <p class="card-result card-result--muted">
-                    <span data-l="pt">→ Em breve</span><span data-l="en" lang="en">→ Soon</span>
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <!-- ══════════════════════════════════ EXPERIÊNCIA ══════════════════════════════════ -->
-    <section class="section" id="experiencia" aria-labelledby="experiencia-title">
-        <div class="section__head">
-            <h2 class="kicker" id="experiencia-title">
-                <span class="kicker__rule" aria-hidden="true"></span>
-                <span data-l="pt">Experiência · Itaú Unibanco, 2021—presente</span>
-                <span data-l="en" lang="en">Experience · Itaú Unibanco, 2021—present</span>
-            </h2>
-        </div>
-
-        <div class="timeline" data-reveal>
-            <div class="timeline__head" aria-hidden="true">
-                <span><span data-l="pt">Início</span><span data-l="en" lang="en">Start</span></span>
-                <span><span data-l="pt">Cargo</span><span data-l="en" lang="en">Role</span></span>
-                <span><span data-l="pt">Atividades</span><span data-l="en" lang="en">Activities</span></span>
+        <!-- ────────────────────────── PROJETOS ────────────────────────── -->
+        <section class="section" id="projetos" aria-labelledby="projetos-title">
+            <div class="section__head">
+                <h2 class="section__label" id="projetos-title">
+                    <span data-l="pt">projetos</span><span data-l="en" lang="en">projects</span>
+                </h2>
+                <div class="section__content">
+                    <p class="section__note">
+                        <span data-l="pt">Fora do trabalho, do código à infraestrutura.</span>
+                        <span data-l="en" lang="en">Outside work, from code to infrastructure.</span>
+                    </p>
+                </div>
             </div>
 
-            <ol class="timeline__list">
-                <li class="timeline__row timeline__row--current">
-                    <p class="timeline__date"><time datetime="2026-03">Mar 2026</time></p>
-                    <h3 class="timeline__role">
-                        <span data-l="pt">Engenheiro de Dados Sênior</span>
-                        <span data-l="en" lang="en">Senior Data Engineer</span>
-                    </h3>
-                    <div class="timeline__body">
-                        <p><span class="bullet" aria-hidden="true">🚀</span>
-                            <span data-l="pt">Desenho e desenvolvo agentes de IA para reduzir o tempo gasto pelos times da comunidade de Seguros em atividades rotineiras/repetitivas.</span>
-                            <span data-l="en" lang="en">Designing and developing AI agents to reduce the time spent by the Insurance community's teams on routine/repetitive activities.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Planejei e implementei o Hub de Vendas, uma base de dados que centraliza diferentes origens de apólices, com isso, aumentei a segurança e confiabilidade dos dados gerados.</span>
-                            <span data-l="en" lang="en">Planned and implemented the Sales Hub, a database that centralises different policy sources, thereby increasing the security and reliability of the data generated.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Contribuo ativamente em agendas técnicas para disseminar conhecimentos sobre engenharia de dados e inteligência artificial com analistas de diferentes senioridades.</span>
-                            <span data-l="en" lang="en">Actively contribute to technical forums to spread knowledge on data engineering and artificial intelligence with analysts of different seniority levels.</span>
-                        </p>
+            <ol>
+                <li class="axis__row">
+                    <p class="axis__label"><time datetime="2026-07">jul 2026</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Esta página</span><span data-l="en" lang="en">This page</span>
+                        </h3>
+                        <div class="axis__body">
+                            <p>
+                                <span data-l="pt">HTML, CSS e JavaScript sem framework, escritos com o Claude Code. Vai para um bucket S3, é distribuída pelo CloudFront e o Route 53 resolve o DNS.</span>
+                                <span data-l="en" lang="en">HTML, CSS and JavaScript with no framework, written with Claude Code. It ships to an S3 bucket, is served through CloudFront, and Route 53 resolves the DNS.</span>
+                            </p>
+                        </div>
+                        <p class="axis__tech">HTML · CSS · JavaScript · S3 · CloudFront · Route 53</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- ────────────────────────── EXPERIÊNCIA ────────────────────────── -->
+        <section class="section" id="experiencia" aria-labelledby="experiencia-title">
+            <div class="section__head">
+                <h2 class="section__label" id="experiencia-title">
+                    <span data-l="pt">experiência</span><span data-l="en" lang="en">experience</span>
+                </h2>
+                <div class="section__content">
+                    <p class="section__note">Itaú Unibanco · 2021 —</p>
+                </div>
+            </div>
+
+            <ol>
+                <li class="axis__row axis__row--current">
+                    <p class="axis__label"><time datetime="2026-03">mar 2026</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Engenheiro de Dados Sênior</span>
+                            <span data-l="en" lang="en">Senior Data Engineer</span>
+                        </h3>
+                        <ul class="delivery-list">
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">agentes de IA para os times da comunidade de Seguros</span>
+                                        <span data-l="en" lang="en">AI agents for the Insurance community's teams</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Desenho e desenvolvo os agentes que cortam o tempo gasto em trabalho repetitivo.</span>
+                                        <span data-l="en" lang="en">I design and build the agents that cut the time spent on repetitive work.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">Hub de Vendas, base única para as origens de apólices</span>
+                                        <span data-l="en" lang="en">Sales Hub, a single base for the policy sources</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Planejei e implementei a centralização. Os dados gerados ficaram mais seguros e confiáveis.</span>
+                                        <span data-l="en" lang="en">Planned and implemented the centralisation. The data it produces became safer and more reliable.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">disseminação de engenharia de dados e IA no time</span>
+                                        <span data-l="en" lang="en">data engineering and AI knowledge across the team</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Contribuo em agendas técnicas com analistas de todas as senioridades.</span>
+                                        <span data-l="en" lang="en">I contribute to technical forums with analysts at every seniority level.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
 
-                <li class="timeline__row">
-                    <p class="timeline__date"><time datetime="2025-03">Mar 2025</time></p>
-                    <h3 class="timeline__role">
-                        <span data-l="pt">Engenheiro de Analytics Sênior</span>
-                        <span data-l="en" lang="en">Senior Analytics Engineer</span>
-                    </h3>
-                    <div class="timeline__body">
-                        <p><span class="bullet" aria-hidden="true">🚀</span>
-                            <span data-l="pt">Reduzi o custo mensal do serviço AWS Athena da comunidade de Cartões PJ em +35%, para isso, implementei um pipeline de dados usando o Glue, Python e Quicksight.</span>
-                            <span data-l="en" lang="en">Cut the Corporate Cards community's monthly AWS Athena cost by +35%, by implementing a data pipeline using Glue, Python and QuickSight.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Desenhei e apresentei uma proposta de fluxo de recepção e desenvolvimento das demandas de engenharia de dados, com isso, reduzimos os bloqueios durante a execução dos projetos.</span>
-                            <span data-l="en" lang="en">Designed and presented a proposal for the intake and development flow of data engineering demands, thereby reducing blockers during project execution.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Mentorei dois estagiários que tinham interesse em análise de dados, como resultado das conversas e atividades desenvolvidas, ambos foram efetivados nas áreas citadas.</span>
-                            <span data-l="en" lang="en">Mentored two interns interested in data analysis; as a result of our conversations and activities, both were hired full-time in the areas mentioned.</span>
-                        </p>
+                <li class="axis__row">
+                    <p class="axis__label"><time datetime="2025-03">mar 2025</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Engenheiro de Analytics Sênior</span>
+                            <span data-l="en" lang="en">Senior Analytics Engineer</span>
+                        </h3>
+                        <ul class="delivery-list">
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">custo mensal do AWS Athena na comunidade de Cartões PJ</span>
+                                        <span data-l="en" lang="en">monthly AWS Athena bill for the Corporate Cards community</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Implementei um pipeline de dados em Glue, Python e QuickSight.</span>
+                                        <span data-l="en" lang="en">Implemented a data pipeline in Glue, Python and QuickSight.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">estagiários mentorados, efetivados na área</span>
+                                        <span data-l="en" lang="en">interns mentored, both hired full-time</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Mentorei os dois em análise de dados, com conversas e atividades ao longo do ciclo.</span>
+                                        <span data-l="en" lang="en">Mentored both in data analysis, with conversations and hands-on work through the cycle.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">fluxo de recepção e desenvolvimento das demandas de engenharia de dados</span>
+                                        <span data-l="en" lang="en">intake and delivery flow for data engineering requests</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Desenhei e apresentei a proposta. Os projetos passaram a travar menos.</span>
+                                        <span data-l="en" lang="en">Designed and presented the proposal. Projects stalled less often.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
 
-                <li class="timeline__row">
-                    <p class="timeline__date"><time datetime="2024-03">Mar 2024</time></p>
-                    <h3 class="timeline__role">
-                        <span data-l="pt">Engenheiro de Analytics Pleno</span>
-                        <span data-l="en" lang="en">Analytics Engineer</span>
-                    </h3>
-                    <div class="timeline__body">
-                        <p><span class="bullet" aria-hidden="true">🚀</span>
-                            <span data-l="pt">Construí um pipeline que processa mais de 100 milhões de eventos de navegação dos clientes no aplicativo do Itaú diariamente, com isso, apoiei os times de UI/UX e produtos na identificação de oportunidades das jornadas de Cartões.</span>
-                            <span data-l="en" lang="en">Built a pipeline that processes more than 100 million customer in-app navigation events for the Itaú app daily, thereby supporting the UI/UX and product teams in identifying opportunities across Cards journeys.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Contribui no letramento de dados de analistas de produtos e negócios da área de Cartões, para isso, planejei e desenvolvi treinamentos sobre AWS, Athena e SQL, como resultado, obtive um NPS médio de 82,5 pontos.</span>
-                            <span data-l="en" lang="en">Contributed to data literacy for product and business analysts in the Cards area, by planning and developing training on AWS, Athena and SQL, achieving an average NPS of 82.5 points.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Refatorei a arquitetura e o código do pipeline de amortização de faturas no data mesh, o que aumentou a qualidade e a tempestividade dos indicadores entregues ao time de pagamentos, para isso, utilizei AWS, Glue, Python, Spark e Quicksight.</span>
-                            <span data-l="en" lang="en">Refactored the architecture and code of the invoice amortisation pipeline in the data mesh, improving the quality and timeliness of the indicators delivered to the payments team, using AWS, Glue, Python, Spark and QuickSight.</span>
-                        </p>
+                <li class="axis__row">
+                    <p class="axis__label"><time datetime="2024-03">mar 2024</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Engenheiro de Analytics Pleno</span>
+                            <span data-l="en" lang="en">Analytics Engineer</span>
+                        </h3>
+                        <ul class="delivery-list">
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">eventos de navegação no aplicativo do Itaú processados por dia</span>
+                                        <span data-l="en" lang="en">in-app navigation events processed a day on the Itaú app</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Construí o pipeline. Os times de produto e UI/UX passaram a enxergar oportunidades nas jornadas de Cartões.</span>
+                                        <span data-l="en" lang="en">Built the pipeline. Product and UI/UX teams could finally spot opportunities across the Cards journeys.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">NPS médio dos treinamentos de AWS, Athena e SQL</span>
+                                        <span data-l="en" lang="en">average NPS across the AWS, Athena and SQL training</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Planejei e ministrei os treinamentos para analistas de produto e negócio de Cartões.</span>
+                                        <span data-l="en" lang="en">Planned and delivered the training for Cards product and business analysts.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">pipeline de amortização de faturas no data mesh</span>
+                                        <span data-l="en" lang="en">invoice amortisation pipeline in the data mesh</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Refatorei arquitetura e código em AWS, Glue, Python, Spark e QuickSight. Os indicadores do time de pagamentos ficaram mais confiáveis e chegaram na hora.</span>
+                                        <span data-l="en" lang="en">Refactored architecture and code in AWS, Glue, Python, Spark and QuickSight. The payments team's indicators became more reliable and arrived on time.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
 
-                <li class="timeline__row">
-                    <p class="timeline__date"><time datetime="2022-07">Jul 2022</time></p>
-                    <h3 class="timeline__role">
-                        <span data-l="pt">Engenheiro de Analytics Júnior</span>
-                        <span data-l="en" lang="en">Junior Analytics Engineer</span>
-                    </h3>
-                    <div class="timeline__body">
-                        <p><span class="bullet" aria-hidden="true">🚀</span>
-                            <span data-l="pt">Reduzi em +50% o tempo necessário para construção de documentações, para isso, desenvolvi uma página em HTML, CSS e JavaScript que gerava templates pré-preenchidos para os usuários, com isso, cobrimos +90% dos projetos desenvolvidos.</span>
-                            <span data-l="en" lang="en">Cut the time needed to build documentation by +50%, by developing a page in HTML, CSS and JavaScript that generated pre-filled templates for users, covering +90% of the projects developed.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Influenciei as squads de Operações na adoção de dados oriundos do data mesh, com isso, aumentamos a qualidade dos dados consumidos e processados pelos triggers, o que tornou a captura de incidentes mais efetivas.</span>
-                            <span data-l="en" lang="en">Influenced Operations squads to adopt data mesh-sourced data, increasing the quality of the data consumed and processed by triggers, which made incident detection more effective.</span>
-                        </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Atuei no processo de migração dos dados do Sybase ASE (on-premises) para a AWS, com isso, refatorei dezenas de queries, otimizando a performance de execução e reduzindo os custos de processamento.</span>
-                            <span data-l="en" lang="en">Worked on migrating data from Sybase ASE (on-premises) to AWS, refactoring dozens of queries to optimise execution performance and reduce processing costs.</span>
-                        </p>
+                <li class="axis__row">
+                    <p class="axis__label"><time datetime="2022-07">jul 2022</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Engenheiro de Analytics Júnior</span>
+                            <span data-l="en" lang="en">Junior Analytics Engineer</span>
+                        </h3>
+                        <ul class="delivery-list">
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">tempo de escrita de documentação, cobrindo <span class="num">+90%</span> dos projetos</span>
+                                        <span data-l="en" lang="en">documentation writing time, covering <span class="num">+90%</span> of our projects</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Desenvolvi uma página em HTML, CSS e JavaScript que gerava templates pré-preenchidos.</span>
+                                        <span data-l="en" lang="en">Built a page in HTML, CSS and JavaScript that generated pre-filled templates.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">adoção de dados do data mesh pelas squads de Operações</span>
+                                        <span data-l="en" lang="en">data mesh adoption by the Operations squads</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Influenciei a migração. Os triggers passaram a capturar incidentes com mais precisão.</span>
+                                        <span data-l="en" lang="en">Drove the migration. Triggers started catching incidents more accurately.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">dezenas de queries na migração do Sybase ASE para a AWS</span>
+                                        <span data-l="en" lang="en">dozens of queries in the Sybase ASE to AWS migration</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Atuei na migração do on-premises e refatorei as consultas, ganhando performance e cortando custo de processamento.</span>
+                                        <span data-l="en" lang="en">Worked on the migration off on-premises and refactored the queries, gaining performance and cutting processing cost.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
 
-                <li class="timeline__row">
-                    <p class="timeline__date"><time datetime="2021-01">Jan 2021</time></p>
-                    <h3 class="timeline__role">
-                        <span data-l="pt">Estagiário de Análise de Dados</span>
-                        <span data-l="en" lang="en">Data Analysis Intern</span>
-                    </h3>
-                    <div class="timeline__body">
-                        <p><span class="bullet" aria-hidden="true">🚀</span>
-                            <span data-l="pt">Construi um pipeline de dados que processava 100 mil apólices de seguros por dia, para isso, utilizei SAS, SQL e Tableau, como resultado, contribui para liberação das horas/homem de analistas de produtos que reduziram o tempo em ETL e aumentaram o tempo em análise de dados.</span>
-                            <span data-l="en" lang="en">Built a data pipeline that processed 100,000 insurance policies per day using SAS, SQL and Tableau, freeing up product analysts' hours to spend less time on ETL and more on data analysis.</span>
+                <li class="axis__row">
+                    <p class="axis__label"><time datetime="2021-01">jan 2021</time></p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">
+                            <span data-l="pt">Estagiário de Análise de Dados</span>
+                            <span data-l="en" lang="en">Data Analysis Intern</span>
+                        </h3>
+                        <ul class="delivery-list">
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">apólices de seguro processadas por dia</span>
+                                        <span data-l="en" lang="en">insurance policies processed a day</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Construí o pipeline em SAS, SQL e Tableau. Os analistas de produto passaram menos tempo em ETL e mais em análise.</span>
+                                        <span data-l="en" lang="en">Built the pipeline in SAS, SQL and Tableau. Product analysts spent less time on ETL and more on analysis.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">monitoramento e qualidade dos pipelines</span>
+                                        <span data-l="en" lang="en">pipeline monitoring and data quality</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Automatizei em Shell Script e SQL, gerando tabelas de métricas — nulos, outliers — e taxa de sucesso.</span>
+                                        <span data-l="en" lang="en">Automated it in Shell Script and SQL, producing metrics tables — nulls, outliers — and success rates.</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="delivery">
+                                <p class="delivery__metric delivery__metric--none" aria-hidden="true">—</p>
+                                <div class="delivery__text">
+                                    <p class="delivery__what">
+                                        <span data-l="pt">documentação técnica dos projetos</span>
+                                        <span data-l="en" lang="en">the projects' technical documentation</span>
+                                    </p>
+                                    <p class="delivery__how">
+                                        <span data-l="pt">Escrevi a documentação, o que facilitou a manutenção e encurtou os repasses de conhecimento.</span>
+                                        <span data-l="en" lang="en">Wrote it, making projects easier to maintain and shortening knowledge handovers.</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- ────────────────────────── FORMAÇÃO ────────────────────────── -->
+        <section class="section" id="formacao" aria-labelledby="formacao-title">
+            <div class="section__head">
+                <h2 class="section__label" id="formacao-title">
+                    <span data-l="pt">formação</span><span data-l="en" lang="en">education</span>
+                </h2>
+            </div>
+
+            <ol>
+                <li class="axis__row axis__row--current">
+                    <p class="axis__label">2026 — 2028</p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">Escola Politécnica da USP</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Especialização em Engenharia de Dados e Big Data</span>
+                            <span data-l="en" lang="en">Specialization, Data Engineering and Big Data</span>
                         </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Contribui para o aumento da qualidade e monitoramento dos pipelines de dados, para isso, construi automações utilizando Shell Script e SQL, resultando em tabelas de métricas (dados nulos, outliers etc) e taxa de sucesso.</span>
-                            <span data-l="en" lang="en">Contributed to improving the quality and monitoring of data pipelines by building automations in Shell Script and SQL, resulting in metrics tables (null values, outliers, etc.) and success-rate tracking.</span>
+                    </div>
+                </li>
+                <li class="axis__row">
+                    <p class="axis__label">2024 — 2025</p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">FIAP</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Especialização em Data Science &amp; Inteligência Artificial · nota 90/100</span>
+                            <span data-l="en" lang="en">Specialization, Data Science &amp; Artificial Intelligence · grade 90/100</span>
                         </p>
-                        <p><span class="bullet" aria-hidden="true">✅</span>
-                            <span data-l="pt">Elaborei documentações técnicas para garantir facilitar a manutenabilidade dos projetos, além disso, conseguimos reduzir o tempo durante o repasse de conhecimento.</span>
-                            <span data-l="en" lang="en">Wrote technical documentation to make projects easier to maintain, which also reduced the time spent on knowledge handovers.</span>
+                    </div>
+                </li>
+                <li class="axis__row">
+                    <p class="axis__label">2020 — 2023</p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">Universidade Presbiteriana Mackenzie</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Bacharelado em Ciência da Computação · nota 94/100</span>
+                            <span data-l="en" lang="en">Bachelor's Degree, Computer Science · grade 94/100</span>
+                        </p>
+                    </div>
+                </li>
+                <li class="axis__row">
+                    <p class="axis__label">2017 — 2019</p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">Instituto Tecnológico de Barueri</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Técnico em Informática, ênfase em Programação · nota 83/100</span>
+                            <span data-l="en" lang="en">Computer Technician, Programming · grade 83/100</span>
                         </p>
                     </div>
                 </li>
             </ol>
-        </div>
-    </section>
+        </section>
 
-    <!-- ══════════════════════════════ FORMAÇÃO + CERTIFICAÇÕES ══════════════════════════════ -->
-    <section class="section section--split" id="formacao">
-        <div aria-labelledby="formacao-title" role="region">
+        <!-- ────────────────────────── CERTIFICAÇÕES ────────────────────────── -->
+        <section class="section" id="certificacoes" aria-labelledby="certificacoes-title">
             <div class="section__head">
-                <h2 class="kicker" id="formacao-title">
-                    <span class="kicker__rule" aria-hidden="true"></span>
-                    <span data-l="pt">Formação acadêmica</span><span data-l="en" lang="en">Education</span>
+                <h2 class="section__label" id="certificacoes-title">
+                    <span data-l="pt">certificações</span><span data-l="en" lang="en">certifications</span>
                 </h2>
             </div>
-            <ol class="edu" data-reveal>
-                <li class="edu__item edu__item--current">
-                    <p class="edu__period">Fev 2026 — Fev 2028</p>
-                    <h3 class="edu__school">Escola Politécnica da USP</h3>
-                    <p class="edu__course">
-                        <span data-l="pt">Especialização em Engenharia de Dados e Big Data</span>
-                        <span data-l="en" lang="en">Specialization, Data Engineering and Big Data</span>
+
+            <ol>
+                <li class="axis__row">
+                    <p class="axis__label">
+                        <span data-l="pt">ago 2025</span><span data-l="en" lang="en">aug 2025</span>
                     </p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">AWS Certified AI Practitioner</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Amazon Web Services · válida até ago 2028</span>
+                            <span data-l="en" lang="en">Amazon Web Services · valid to Aug 2028</span>
+                        </p>
+                    </div>
                 </li>
-                <li class="edu__item">
-                    <p class="edu__period">Abr 2024 — Abr 2025</p>
-                    <h3 class="edu__school">FIAP</h3>
-                    <p class="edu__course">
-                        <span data-l="pt">Especialização em Data Science &amp; Inteligência Artificial · nota 90/100</span>
-                        <span data-l="en" lang="en">Specialization, Data Science &amp; Artificial Intelligence · grade 90/100</span>
+                <li class="axis__row">
+                    <p class="axis__label">
+                        <span data-l="pt">nov 2023</span><span data-l="en" lang="en">nov 2023</span>
                     </p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">AWS Certified Solutions Architect — Associate</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Amazon Web Services · válida até nov 2026</span>
+                            <span data-l="en" lang="en">Amazon Web Services · valid to Nov 2026</span>
+                        </p>
+                    </div>
                 </li>
-                <li class="edu__item">
-                    <p class="edu__period">Jan 2020 — Dez 2023</p>
-                    <h3 class="edu__school">Universidade Presbiteriana Mackenzie</h3>
-                    <p class="edu__course">
-                        <span data-l="pt">Bacharelado em Ciência da Computação · nota 94/100</span>
-                        <span data-l="en" lang="en">Bachelor's Degree, Computer Science · grade 94/100</span>
+                <li class="axis__row">
+                    <p class="axis__label">
+                        <span data-l="pt">jul 2022</span><span data-l="en" lang="en">jul 2022</span>
                     </p>
-                </li>
-                <li class="edu__item">
-                    <p class="edu__period">Jan 2017 — Dez 2019</p>
-                    <h3 class="edu__school">Instituto Tecnológico de Barueri</h3>
-                    <p class="edu__course">
-                        <span data-l="pt">Técnico em Informática, ênfase em Programação · nota 83/100</span>
-                        <span data-l="en" lang="en">Computer Technician, Programming · grade 83/100</span>
-                    </p>
+                    <div class="axis__content">
+                        <h3 class="axis__title">AWS Certified Cloud Practitioner</h3>
+                        <p class="axis__meta">
+                            <span data-l="pt">Amazon Web Services · expirada em jul 2025</span>
+                            <span data-l="en" lang="en">Amazon Web Services · expired Jul 2025</span>
+                        </p>
+                    </div>
                 </li>
             </ol>
-        </div>
+        </section>
 
-        <div aria-labelledby="certificacoes-title" role="region">
-            <div class="section__head">
-                <h2 class="kicker" id="certificacoes-title">
-                    <span class="kicker__rule" aria-hidden="true"></span>
-                    <span data-l="pt">Certificações</span><span data-l="en" lang="en">Certifications</span>
-                </h2>
-            </div>
-            <ul class="cert" data-reveal>
-                <li class="card card--compact">
-                    <h3 class="card-title card-title--sm">AWS Certified AI Practitioner</h3>
-                    <p class="card-meta">Amazon Web Services ·
-                        <span data-l="pt">emitida ago 2025 · válida até ago 2028</span>
-                        <span data-l="en" lang="en">issued Aug 2025 · valid to Aug 2028</span>
-                    </p>
-                </li>
-                <li class="card card--compact">
-                    <h3 class="card-title card-title--sm">AWS Certified Solutions Architect — Associate</h3>
-                    <p class="card-meta">Amazon Web Services ·
-                        <span data-l="pt">emitida nov 2023 · válida até nov 2026</span>
-                        <span data-l="en" lang="en">issued Nov 2023 · valid to Nov 2026</span>
-                    </p>
-                </li>
-                <li class="card card--compact">
-                    <h3 class="card-title card-title--sm">AWS Certified Cloud Practitioner</h3>
-                    <p class="card-meta">Amazon Web Services ·
-                        <span data-l="pt">emitida jul 2022 · expirada jul 2025</span>
-                        <span data-l="en" lang="en">issued Jul 2022 · expired Jul 2025</span>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </section>
+    </div>
 
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer wrap">
     <div class="site-footer__inner">
         <p class="site-footer__copy">Leonardo Rocha © 2026</p>
-        <a class="site-footer__top" href="#topo">
-            <span data-l="pt">Voltar ao topo</span><span data-l="en" lang="en">Back to top</span>
+        <a href="#topo">
+            <span data-l="pt">voltar ao topo</span><span data-l="en" lang="en">back to top</span>
         </a>
     </div>
 </footer>
