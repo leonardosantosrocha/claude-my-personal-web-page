@@ -21,7 +21,7 @@ A minimalist personal portfolio showcasing professional experience, projects, an
 
 **Personal projects** - Work built outside the job, from code to infrastructure
 
-**Experience** - Every role at Itaú Unibanco since 2021. Each delivery splits what was delivered from how it was done — the outcome on the line, the method below in muted ink, and a rule-coloured dash holding the left column
+**Experience** - Every role at Itaú Unibanco since 2021. Each delivery is a single line, its metric highlighted inline, with a rule-coloured dash holding the left column and the role's stack listed underneath
 
 **Education & certifications** - Academic training and AWS certifications
 
@@ -143,10 +143,12 @@ Features:
 - Read top to bottom, the page is a time series: Jul 2026 back to Jan 2017
 
 ### Deliveries
-- Each role holds a list of deliveries, and every delivery separates **what was delivered** from **how it was done**: the outcome on the line in full ink, the method below in muted ink
+- Each role holds a list of deliveries, one line each, sourced verbatim from the LinkedIn export — no paraphrasing
+- Any metric in a delivery's text is highlighted inline with `.num` (same treatment as the hero's proof line)
 - A rule-coloured dash holds the left column. It is structure, not content, so it carries `aria-hidden` and never reaches a screen reader
 - The dash column is sized `auto`, so it takes the width of the dash itself rather than reserving space for a figure
 - Spacing follows the rest of the page: `gap: 12px` between deliveries and between the dash and the text, `max-width: 68ch` on the text — the same values `.axis__body` uses
+- Each role closes with its stack, listed in `.axis__tech` underneath the delivery list
 
 ### Responsive Design
 - Mobile-first approach
