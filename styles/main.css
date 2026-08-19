@@ -239,7 +239,7 @@ a:hover { text-decoration: underline; }
 }
 .hero__lead {
     margin-top: 18px;
-    max-width: 44ch;
+    max-width: 73ch;
     font-size: clamp(17px, 15.8px + 0.31vw, 19px);
     line-height: 1.55;
     color: var(--ink-muted);
@@ -341,11 +341,10 @@ a:hover { text-decoration: underline; }
     line-height: 1.65;
     color: var(--ink);
 }
-/* ── entregas: o que foi entregue, e como ──
+/* ── entregas ──
    A coluna da esquerda guarda o lugar da métrica; hoje todas as entregas usam
-   travessão e a prova numérica vive na linha do hero. O que foi entregue fica
-   na linha, o método recua para a tinta suave — assim nenhuma frase precisa
-   repetir "para isso… com isso…". */
+   travessão, e o número (quando existe) fica destacado dentro da própria frase
+   via .num. */
 .delivery-list {
     display: grid;
     gap: 12px;
@@ -378,12 +377,6 @@ a:hover { text-decoration: underline; }
 .delivery__text { min-width: 0; }
 
 .delivery__what { line-height: 1.6; }
-.delivery__how {
-    margin-top: 4px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--ink-muted);
-}
 
 /* números de resultado: destaque por forma e peso, nunca por cor. A tinta cheia
    os mantém firmes mesmo dentro de um parágrafo secundário. */
