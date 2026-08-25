@@ -17,7 +17,7 @@
             subject: 'Contato — Leonardo Rocha'
         },
         en: {
-            langToggle: 'Mudar para português',
+            langToggle: 'Switch to Portuguese',
             menuOpen: 'Open menu',
             menuClose: 'Close menu',
             subject: 'Hello — Leonardo Rocha'

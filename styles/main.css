@@ -331,6 +331,13 @@ a:hover { text-decoration: underline; }
 .axis__row--current .axis__label { color: var(--accent); }
 
 .axis__title { font-size: 17px; line-height: 1.35; }
+.axis__repo-link {
+    margin-left: 8px;
+    color: var(--ink-muted);
+    font-size: 14px;
+    vertical-align: middle;
+}
+.axis__repo-link:hover { color: var(--accent); text-decoration: none; }
 .axis__meta { margin-top: 4px; font-size: 13px; line-height: 1.55; color: var(--ink-muted); }
 
 .axis__body {
