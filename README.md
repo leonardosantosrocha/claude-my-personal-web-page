@@ -1,4 +1,4 @@
-# Leonardo Rocha - Personal Portfolio
+# Personal Portfolio
 
 A minimalist personal portfolio showcasing professional experience, projects, and technical expertise. Built with vanilla HTML, CSS, and JavaScript for maximum performance.
 
